@@ -8,7 +8,7 @@ import classes from "./user.module.css";
 const LogIn = () => {
   const navigate = useNavigate();
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + "login";
+  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGIN;
 
   const { setUser } = useContext(AccountContext);
   const [name, setName] = useState("");
@@ -40,7 +40,7 @@ const LogIn = () => {
       axios.post(Url, body).then((response) => {
         if (response.data.login === true) {
           setUser({ login: true, user: response.data.user });
-          navigate("/home");
+          navigate(process.env.REACT_APP_HOME);
         } else {
           setUser({ login: false });
           setStatueM(checkValid(response.data.message));
@@ -75,7 +75,7 @@ const LogIn = () => {
           ></input>
           <h5
             onClick={() => {
-              navigate("/user/requestrest");
+              navigate(process.env.REACT_APP_REQ_PASS);
             }}
           >
             forget password?
@@ -87,7 +87,7 @@ const LogIn = () => {
           don't have account,{" "}
           <span
             onClick={() => {
-              navigate("/signup");
+              navigate(process.env.REACT_APP_SIGNUP);
             }}
           >
             create one ?

@@ -27,15 +27,15 @@ const Home = () => {
         <SideBar />
       </ProSidebarProvider>
       <Routes>
-        <Route path="/" element={<LogIn />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/user/requestrest" element={<ReqPass />} />
-        <Route path="/user/restCode" element={<RstCode/>} />
+        <Route path={process.env.REACT_APP_LOGIN} element={<LogIn />} />
+        <Route path={process.env.REACT_APP_SIGNUP} element={<SignUp />} />
+        <Route path={process.env.REACT_APP_REQ_PASS} element={<ReqPass />} />
+        <Route path={process.env.REACT_APP_RST_CODE} element={<RstCode/>} />
         <Route element={<PrivatePreset />}>
-          <Route path="/user/restPass" element={<RstPass/>} />
+          <Route path={process.env.REACT_APP_RST_PASS} element={<RstPass/>} />
         </Route>
         <Route
-          path="/home"
+          path={process.env.REACT_APP_HOME}
           element={
             <div>
               <Section />

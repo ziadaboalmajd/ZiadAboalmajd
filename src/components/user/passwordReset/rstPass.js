@@ -8,7 +8,7 @@ import classes from "../user.module.css";
 const LogIn = () => {
     const navigate = useNavigate();
 
-    const Url = process.env.REACT_APP_DOMAIN_LINK + "user/updatepass";
+    const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_UP_PASS;
 
     const { setUser, setCodePass } = useContext(AccountContext);
     const [pass, setPass] = useState("");
@@ -38,7 +38,7 @@ const LogIn = () => {
             axios.post(Url, body, { withCredentials: true }).then((response) => {
                 if (response.data.login === true) {
                     setUser({ login: true, user: response.data.user });
-                    navigate("/home");
+                    navigate(process.env.REACT_APP_HOME);
                     setCodePass(false);
                 }
             }).catch(() => {

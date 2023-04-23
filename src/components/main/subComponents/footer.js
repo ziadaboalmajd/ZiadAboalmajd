@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGmail, SiFreelancer } from "react-icons/si";
 import { Info } from "../../../Data/Data";
 
 const Footer = () => {
-  const [cInfo, setCinfo] = useState(Info);
   return (
     <footer className="section" id="contact">
       <h3>contact</h3>

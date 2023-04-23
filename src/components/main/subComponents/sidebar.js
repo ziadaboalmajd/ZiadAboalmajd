@@ -18,7 +18,7 @@ import {
 import classes from "./headNside.module.css";
 
 const SideBar = () => {
-  const Url =  process.env.REACT_APP_DOMAIN_LINK + "signout";
+  const Url =  process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUT;
   const navigate = useNavigate();
 
   const { user, setUser, setViewPro } = useContext(AccountContext);
@@ -49,7 +49,6 @@ const SideBar = () => {
         <Menu
           className={classes.menu}
           onClick={() => {
-            console.log(toggled);
             toggleSidebar();
           }}
         >
@@ -74,7 +73,7 @@ const SideBar = () => {
                 key={id}
                 prefix={<Prefix />}
                 onClick={() => {
-                  navigate("home");
+                  navigate(process.env.REACT_APP_HOME);
                 }}
                 href={"#" + href}
               >
@@ -117,7 +116,7 @@ const SideBar = () => {
               welcome {user.user}
             </MenuItem>
           ) : (
-            <MenuItem component={<Link to="/" />} prefix={<IoEnter />}>
+            <MenuItem component={<Link to={process.env.REACT_APP_LOGIN} />} prefix={<IoEnter />}>
               logIn
             </MenuItem>
           )}

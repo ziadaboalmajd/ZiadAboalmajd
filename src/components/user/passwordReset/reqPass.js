@@ -6,7 +6,7 @@ import axios from "axios";
 const ReqPass = () => {
   const navigate = useNavigate();
   const [btn, setBtn] = useState(false);
-  const Url = process.env.REACT_APP_DOMAIN_LINK + "sendmail";
+  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -38,7 +38,7 @@ const ReqPass = () => {
         const body = { to: email };
         axios.post(Url, body).then((response) => {
           if (response.data.sent === true) {
-            navigate("/user/restCode")
+            navigate(process.env.REACT_APP_RST_CODE)
             localStorage.setItem("mail", email);
           } else {
             if (response.data.message === "Wrong email") {
@@ -76,7 +76,7 @@ const ReqPass = () => {
           an email will be send to your address,{" "}
           <span
             onClick={() => {
-              navigate("/");
+              navigate(process.env.REACT_APP_HOME);
             }}
           >
             login instead ?

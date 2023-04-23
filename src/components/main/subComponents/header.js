@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import axios from "axios";
 import { FaBars } from "react-icons/fa";
 import { AccountContext } from "../../user/accountContext";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +39,7 @@ const Header = (props) => {
         ) : (
           <h4
             onClick={() => {
-              navigate("/");
+              navigate(process.env.REACT_APP_LOGIN);
             }}
           >
             logIn
@@ -55,7 +54,7 @@ const Header = (props) => {
                   setUser(false);
                   props.signOut();
                   setViewPro(false);
-                  navigate("/home");
+                  navigate(process.env.REACT_APP_HOME);
                 }}
               >
                 signout

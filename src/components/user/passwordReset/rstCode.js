@@ -5,8 +5,8 @@ import axios from "axios";
 import { AccountContext } from "../accountContext";
 
 const RstCode = () => {
-    const Url = process.env.REACT_APP_DOMAIN_LINK + "rstmail";
-    const Urle = process.env.REACT_APP_DOMAIN_LINK + "sendmail";
+    const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_RST_MAIL;
+    const Urle = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
 
     const navigate = useNavigate();
     const { setCodePass, setRstCode } = useContext(AccountContext);
@@ -49,7 +49,7 @@ const RstCode = () => {
                     setRstCode(response.data.code);
                     if (Number(code) === Number(response.data.code)) {
                         setCodePass(true);
-                        navigate("/user/restPass");
+                        navigate(process.env.REACT_APP_RST_PASS);
                     } else {
                         setCodePass(false);
                         setStatueM("wrong code please check again");
@@ -73,7 +73,7 @@ const RstCode = () => {
         };
         axios.post(Urle, body).then((response) => {
             if (response.data.sent === true) {
-                navigate("/user/restCode")
+                // navigate("/user/restCode")
                 setStatueM("email has been resend");
             }
         }).catch(() => {

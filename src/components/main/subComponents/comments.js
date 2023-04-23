@@ -16,7 +16,7 @@ const Comments = () => {
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + "comment";
+  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENT;
   const current = new Date();
   const date = `${current.getDate()}-${current.getMonth() + 1
     }-${current.getFullYear()}`;
@@ -114,7 +114,7 @@ const Comments = () => {
         <div className={classes.comLock}>
           <h3
             onClick={() => {
-              if (!user.login) navigate("/")
+              if (!user.login) navigate(process.env.REACT_APP_LOGIN)
             }}
           >
             {noComm && user.login ? "you only could post one comment" : "login to be able to comment"}

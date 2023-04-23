@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AccountContext = createContext();
 
-const Url = process.env.REACT_APP_DOMAIN_LINK + "login";
+const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGIN;
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({ login: null });
@@ -29,7 +29,7 @@ const UserContext = ({ children }) => {
     }
   };
   useEffect(() => {
-    navigate("/home")
+    navigate(process.env.REACT_APP_HOME)
     getCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

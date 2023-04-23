@@ -5,7 +5,7 @@ import { AccountContext } from "./accountContext";
 import classes from "./user.module.css";
 import { useEffect } from "react";
 
-const Url = process.env.REACT_APP_DOMAIN_LINK + "signup";
+const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNUP;
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const SignUp = () => {
         axios.post(Url, body).then((response) => {
           if (response.data.login) {
             setUser({ login: true, user: response.data.user });
-            navigate("/home");
+            navigate(process.env.REACT_APP_HOME);
           } else {
             setUser({ login: false });
             setStatueM(checkValid(response.data.message));
@@ -97,7 +97,7 @@ const SignUp = () => {
           already have an account,{" "}
           <span
             onClick={() => {
-              navigate("/");
+              navigate(process.env.REACT_APP_LOGIN);
             }}
           >
             login ?

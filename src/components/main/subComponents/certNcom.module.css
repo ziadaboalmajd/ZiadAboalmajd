@@ -1,0 +1,307 @@
+/* global  */
+.stopScroll {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 450px;
+}
+
+.comment div:first-child {
+    margin-top: 1rem;
+}
+
+.comment>div:nth-child(3) {
+    width: 87%;
+}
+
+.comment h1,
+.certiSec h1 {
+    color: var(--clr-primary-5);
+    font-size: 23px;
+    text-align: center;
+}
+
+.comment h6 {
+    display: flex;
+    justify-content: center;
+    /* padding: 0.2rem 0.5rem; */
+    padding: 0.1rem 0.5rem;
+    margin: 4em auto 0.5rem;
+    color: var(--clr-grey-6);
+    font-size: 14px;
+    background: var(--clr-grey-9);
+    width: fit-content;
+    border-radius: 15px;
+}
+
+.comment h6>span:first-child span {
+    background-color: var(--clr-grey-10);
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.comment .trash {
+    color: var(--za-alerttUsr);
+}
+
+.certiSec h1 {
+    margin-bottom: 2.5rem;
+}
+
+.comLock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+    background-color: hsl(212deg 33% 89% / 65%);
+    color: var(--clr-grey-4);
+    border-radius: 7px;
+    border: 3px solid hsl(186deg 64.42% 84.51%);
+}
+
+.comLock h3 {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.secomment {
+    display: flex;
+    flex-direction: column;
+}
+
+.secomment div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.secomment div:last-child {
+    margin: auto;
+    width: 37%;
+    height: 3px;
+    background-color: var(--clr-primary-2);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.secomment h3 {
+    margin: 0;
+    color: var(--clr-primary-2);
+    font-size: 15px;
+}
+
+.secomment h5 {
+    color: var(--clr-grey-6);
+    font-size: 11px;
+}
+
+.secomment p {
+    width: 80%;
+    color: var(--clr-grey-1);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.comForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 19rem;
+}
+
+.comForm label {
+    color: var(--clr-grey-3);
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+}
+
+.comForm textarea {
+    margin: 1rem 0;
+    padding: 5px 10px;
+    width: 100%;
+    height: 6rem;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    resize: none;
+}
+
+.comForm textarea::selection {
+    background-color: var(--clr-grey-8);
+}
+
+.comForm textarea:focus {
+    outline: none !important;
+    border: 1px solid var(--clr-grey-8);
+    box-shadow: 0 0 10px var(--clr-grey-8);
+}
+
+.comForm button {
+    background-color: transparent;
+    margin-top: 1rem;
+    padding: 0.3rem 1.2rem;
+    color: var(--clr-grey-5);
+    font-size: 16px;
+    text-transform: capitalize;
+    border: var(--clr-grey-5) 1.5px solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.comForm h5 {
+    color: var(--za-alertUsr);
+    font-size: 11px;
+    margin-top: 1rem;
+}
+
+.comAlert h4 {
+    color: var(--clr-grey-6);
+    font-size: 9px !important;
+    text-align: center;
+}
+
+.delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete>div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+    height: 7rem;
+    background-color: var(--clr-grey-9);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.delete>div:first-child div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.delete>div:nth-child(2) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.delete>div:first-child div>h5:first-child {
+    color: var(--clr-primary-6);
+}
+
+.delete>div:first-child div>h5:nth-child(2) {
+    color: var(--za-alertUsr);
+}
+
+.delete>div:first-child p {
+    margin: 0 auto;
+    width: 70%;
+    /* color: red; */
+    font-size: 13px;
+    text-align: center;
+}
+
+/* certificates */
+
+.certificate {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.certificate article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.certificate img {
+    max-width: 250px;
+    margin: 1rem 0;
+}
+
+.certificate a {
+    text-decoration: none;
+    color: var(--clr-grey-3);
+}
+
+.certificate h6 {
+    color: var(--clr-grey-6);
+    font-size: 15px;
+}
+
+@media screen and (min-width: 720px) {
+    .certificate {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.flimgDiv,
+.delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease-out;
+}
+
+.flimgDiv img {
+    position: absolute;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+    -moz-transform: translate(-50%, -50%) scale(0.5);
+    -ms-transform: translate(-50%, -50%) scale(0.5);
+    -o-transform: translate(-50%, -50%) scale(0.5);
+    transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+}
+
+.imgOpen {
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+.imgOpen img {
+    border-radius: 10px;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -moz-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    -o-transform: translate(-50%, -50%) scale(1);
+}

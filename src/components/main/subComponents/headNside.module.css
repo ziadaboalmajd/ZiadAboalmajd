@@ -1,0 +1,120 @@
+/* global  */
+.stopScroll {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden
+}
+.stopScrolls {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden
+}
+
+/* sidebar */
+
+.Menutitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 15px;
+  font-size: 17px;
+  font-weight: 800;
+  color: darkcyan;
+  /* color: cornflowerblue;color: slategray;color: darkslategray;color: teal;color: cadetblue; */
+}
+
+.menu {
+  margin: 1.5rem 0;
+}
+
+.sidebar {
+  background-color: var(--clr-primary-9);
+  font-size: 15px;
+  color: darkslategray;
+  color: dimgray;
+  font-weight: 700;
+  user-select: none;
+}
+
+.sidebar li a>span:first-child {
+  padding-top: 5px;
+}
+
+.sidebar li {
+  margin: 0.5rem 0;
+}
+
+.sidebar li:nth-child(2) {
+  margin-top: 0.7rem;
+}
+
+.subProjects {
+  background: var(--clr-grey-10);
+}
+
+/* header */
+
+.barsbtn {
+  font-size: 1.3rem;
+  background-color: transparent;
+  color: var(--clr-primary-5);
+  border: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  height: 100%;
+  min-height: 5rem;
+}
+
+.header .signout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: 12rem;
+  height: 12rem;
+  background-color: var(--clr-grey-9);
+  color: var(--clr-grey-4);
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.header h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: calc((100%) + (0.5rem));
+  padding: 2vh 0;
+}
+
+.header h4:nth-child(2) {
+  color: var(--za-alertUsr);
+}
+
+.header .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #00000045;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}

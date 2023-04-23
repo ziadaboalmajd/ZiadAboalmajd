@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { AccountContext } from "./accountContext";
 import classes from "./user.module.css";
 
-
 const LogIn = () => {
   const navigate = useNavigate();
 
@@ -78,7 +77,7 @@ const LogIn = () => {
               navigate(process.env.REACT_APP_REQ_PASS);
             }}
           >
-            forget password?
+            forget password ?
           </h5>
           <button>login</button>
           <h3>{statueM}</h3>

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ZiadAboalmajd/static/css/main.e4a7c85b.css",
+    "main.js": "/ZiadAboalmajd/static/js/main.7112fe76.js",
+    "index.html": "/ZiadAboalmajd/index.html",
+    "main.e4a7c85b.css.map": "/ZiadAboalmajd/static/css/main.e4a7c85b.css.map",
+    "main.7112fe76.js.map": "/ZiadAboalmajd/static/js/main.7112fe76.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4a7c85b.css",
+    "static/js/main.7112fe76.js"
+  ]
+}

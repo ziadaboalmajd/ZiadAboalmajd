@@ -18,9 +18,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "clean": "rm -rf  ./build|| true",
-    "build": "npm run clean",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

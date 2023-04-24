@@ -11,19 +11,23 @@ const UserContext = ({ children }) => {
   const [viewPro, setViewPro] = useState(null);
   const [rstCode, setRstCode] = useState(0);
   const [codePass, setCodePass] = useState(null);
-  
+
   const navigate = useNavigate();
-  
+
   const getCookies = async () => {
     try {
       // axios.defaults.withCredentials = true;
-      axios.get(Url).then((response) => {
-        if (response.data.login) {
-          setUser({ login: true, user: response.data.user });
-        } else {
-          setUser({ login: false });
-        }
-      });
+      axios
+        .get(Url, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data.login) {
+            setUser({ login: true, user: response.data.user });
+          } else {
+            setUser({ login: false });
+          }
+        });
     } catch (err) {
       console.log(err);
     }

@@ -16,8 +16,8 @@ const UserContext = ({ children }) => {
   
   const getCookies = async () => {
     try {
-      axios.defaults.withCredentials = true;
-      axios.get(Url, { withCredentials: true }).then((response) => {
+      // axios.defaults.withCredentials = true;
+      axios.get(Url).then((response) => {
         if (response.data.login) {
           setUser({ login: true, user: response.data.user });
         } else {

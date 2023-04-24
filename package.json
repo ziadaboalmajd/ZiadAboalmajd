@@ -18,8 +18,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "clean": "rm -rf  ./build|| true",
-    "build": "npm run clean && react-scripts build"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

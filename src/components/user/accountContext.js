@@ -30,7 +30,7 @@ const UserContext = ({ children }) => {
 
   const test = async () => {
     try {
-      axios.get(Url, { withCredentials: true }).then((response) => {
+      axios.get(process.env.REACT_APP_DOMAIN_LINK + "/test", { withCredentials: true }).then((response) => {
         if (response.data) {
           console.log(response.data);
         } else {

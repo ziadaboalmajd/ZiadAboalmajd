@@ -67,7 +67,7 @@ const ReqPass = () => {
             type="text"
             maxLength={35}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.replace(/\s/g, ''))}
           ></input>
           <button disabled={btn}>send email</button>
           <h3>{statueM}</h3>

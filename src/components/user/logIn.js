@@ -61,7 +61,7 @@ const LogIn = () => {
             type="text"
             maxLength={10}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value.replace(/\s/g, ''))}
           ></input>
           <label>password</label>
           <input
@@ -70,7 +70,7 @@ const LogIn = () => {
             autoComplete="on"
             maxLength={35}
             value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            onChange={(e) => setPass(e.target.value.replace(/\s/g, ''))}
           ></input>
           <h5
             onClick={() => {

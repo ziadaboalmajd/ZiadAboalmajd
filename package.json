@@ -19,7 +19,7 @@
   },
   "scripts": {
     "clean": "rm -rf  ./build|| true",
-    "build": "npm run clean && react-scripts build",
+    "build": "npm run clean",
     "start": "react-scripts start"
   },
   "eslintConfig": {

@@ -113,6 +113,13 @@ const degrees = [
     name: "professional Udacity's certificate",
     title: "Front end",
   },
+  {
+    id: 3,
+    image: process.env.PUBLIC_URL + "/ielts.jpg",
+    link: "https://drive.google.com/file/d/1lbOZKnRM_SyLPt9UQkMDftRGYbPDYcmk/view?usp=share_link",
+    name: "IELTS Academic",
+    title: "English",
+  },
 ];
 const sideData = [
   {

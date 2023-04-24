@@ -23,19 +23,45 @@ const UserContext = ({ children }) => {
           setUser({ login: false });
         }
       });
-
     } catch (err) {
       console.log(err);
     }
   };
+
+  const test = async () => {
+    try {
+      axios.get(Url, { withCredentials: true }).then((response) => {
+        if (response.data) {
+          console.log(response.data);
+        } else {
+          console.log("error ya ziad");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    navigate(process.env.REACT_APP_HOME)
+    navigate(process.env.REACT_APP_HOME);
+    test();
     getCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <AccountContext.Provider value={{ user, setUser, setViewPro, viewPro, setRstCode, rstCode, setCodePass, codePass }}>
+    <AccountContext.Provider
+      value={{
+        user,
+        setUser,
+        setViewPro,
+        viewPro,
+        setRstCode,
+        rstCode,
+        setCodePass,
+        codePass,
+      }}
+    >
       {children}
     </AccountContext.Provider>
   );

@@ -15,22 +15,21 @@ const UserContext = ({ children }) => {
   const navigate = useNavigate();
 
   const getCookies = async () => {
-    try {
-      // axios.defaults.withCredentials = true;
-      await axios
-        .get(Url, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data.login) {
-            setUser({ login: true, user: response.data.user });
-          } else {
-            setUser({ login: false });
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
+    // axios.defaults.withCredentials = true;
+    await axios
+      .get(Url, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.data.login) {
+          setUser({ login: true, user: response.data.user });
+        } else {
+          setUser({ login: false });
+        }
+      })
+      .catch(() => {
+        setUser({ login: false });
+      });
   };
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const Comments = () => {
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENT;
+  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
   const current = new Date();
   const date = `${current.getDate()}-${
     current.getMonth() + 1

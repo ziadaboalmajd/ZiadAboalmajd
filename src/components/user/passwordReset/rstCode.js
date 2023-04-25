@@ -6,9 +6,9 @@ import { AccountContext } from "../accountContext";
 
 const RstCode = () => {
   const Url =
-    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_RST_MAIL;
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_RST_MAILA;
   const Urle =
-    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAILA;
 
   const navigate = useNavigate();
   const { setCodePass, setRstCode } = useContext(AccountContext);

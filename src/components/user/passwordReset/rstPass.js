@@ -7,7 +7,7 @@ import classes from "../user.module.css";
 const LogIn = () => {
   const navigate = useNavigate();
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_UP_PASS;
+  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_UP_PASSA;
 
   const { setUser, setCodePass } = useContext(AccountContext);
   const [pass, setPass] = useState("");

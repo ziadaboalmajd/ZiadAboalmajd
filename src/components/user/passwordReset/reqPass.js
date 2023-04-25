@@ -7,7 +7,7 @@ const ReqPass = () => {
   const navigate = useNavigate();
   const [btn, setBtn] = useState(false);
   const Url =
-    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAILA;
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 

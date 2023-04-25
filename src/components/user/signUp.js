@@ -5,7 +5,7 @@ import { AccountContext } from "./accountContext";
 import classes from "./user.module.css";
 import { useEffect } from "react";
 
-const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNUP;
+const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNUPA;
 
 const SignUp = () => {
   const navigate = useNavigate();

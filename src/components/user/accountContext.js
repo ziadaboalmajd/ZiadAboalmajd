@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AccountContext = createContext();
 
-const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGIN;
+const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGINA;
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({ login: null });

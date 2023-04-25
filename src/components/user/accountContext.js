@@ -33,7 +33,7 @@ const UserContext = ({ children }) => {
   };
 
   useEffect(() => {
-    navigate("/ZiadAboalmajd/home");
+    navigate(process.env.REACT_APP_HOME);
     getCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

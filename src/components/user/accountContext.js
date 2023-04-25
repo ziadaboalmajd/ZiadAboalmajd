@@ -32,25 +32,8 @@ const UserContext = ({ children }) => {
       });
   };
 
-  const test = async () => {
-    // axios.defaults.withCredentials = true;
-    await axios
-      .get("https://zany-erin-bunny-sock.cyclic.app/test1/test2/test/", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data) {
-          console.log(response.data);
-        }
-      })
-      .catch(() => {
-        console.log("error ya basha");
-      });
-  };
-
   useEffect(() => {
     navigate(process.env.REACT_APP_HOME);
-    test();
     getCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

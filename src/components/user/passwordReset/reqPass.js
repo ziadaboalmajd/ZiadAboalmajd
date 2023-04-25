@@ -37,18 +37,22 @@ const ReqPass = () => {
     if (email.toLowerCase().match(re) !== null && email.length > 6) {
       try {
         const body = { to: email };
-        await axios.post(Url, body).then((response) => {
-          if (response.data.sent === true) {
-            navigate(process.env.REACT_APP_RST_CODE);
-            localStorage.setItem("mail", email);
-          } else {
-            if (response.data.message === "Wrong email") {
-              setStatueM("this email is not exists");
+        await axios
+          .post(Url, body, {
+            withCredentials: true,
+          })
+          .then((response) => {
+            if (response.data.sent === true) {
+              navigate(process.env.REACT_APP_RST_CODE);
+              localStorage.setItem("mail", email);
             } else {
-              setStatueM("an error occurs");
+              if (response.data.message === "Wrong email") {
+                setStatueM("this email is not exists");
+              } else {
+                setStatueM("an error occurs");
+              }
             }
-          }
-        });
+          });
       } catch (err) {
         setStatueM("an error occurs");
         console.log(err);

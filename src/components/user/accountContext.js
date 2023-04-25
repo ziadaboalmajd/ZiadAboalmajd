@@ -17,7 +17,7 @@ const UserContext = ({ children }) => {
   const getCookies = async () => {
     try {
       // axios.defaults.withCredentials = true;
-      axios
+      await axios
         .get(Url, {
           withCredentials: true,
         })
@@ -33,27 +33,9 @@ const UserContext = ({ children }) => {
     }
   };
 
-  const test = async () => {
-    try {
-      axios
-        .get(process.env.REACT_APP_DOMAIN_LINK + "/test", {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data) {
-            console.log(response.data);
-          } else {
-            console.log("error ya ziad");
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
     navigate(process.env.REACT_APP_HOME);
-    test();
+    // test();
     getCookies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

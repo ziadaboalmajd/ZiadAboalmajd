@@ -18,7 +18,7 @@ import {
 import classes from "./headNside.module.css";
 
 const SideBar = () => {
-  const Url =  process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUT;
+  const Url =  process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUTA;
   const navigate = useNavigate();
 
   const { user, setUser, setViewPro } = useContext(AccountContext);

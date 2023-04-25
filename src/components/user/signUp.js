@@ -49,15 +49,17 @@ const SignUp = () => {
           password: nPass,
         };
 
-        await axios.post(Url, body).then((response) => {
-          if (response.data.login) {
-            setUser({ login: true, user: response.data.user });
-            navigate(process.env.REACT_APP_HOME);
-          } else {
-            setUser({ login: false });
-            setStatueM(checkValid(response.data.message));
-          }
-        });
+        await axios
+          .post(Url, body, { withCredentials: true })
+          .then((response) => {
+            if (response.data.login) {
+              setUser({ login: true, user: response.data.user });
+              navigate(process.env.REACT_APP_HOME);
+            } else {
+              setUser({ login: false });
+              setStatueM(checkValid(response.data.message));
+            }
+          });
       } catch (err) {
         setStatueM("an error occurs");
         console.log(err);
@@ -76,19 +78,19 @@ const SignUp = () => {
           <input
             maxLength={10}
             value={nName}
-            onChange={(e) => setnName(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setnName(e.target.value.replace(/\s/g, ""))}
           ></input>
           <label>email</label>
           <input
             maxLength={35}
             value={mail}
-            onChange={(e) => setmail(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setmail(e.target.value.replace(/\s/g, ""))}
           ></input>
           <label>password</label>
           <input
             maxLength={35}
             value={nPass}
-            onChange={(e) => setNpass(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setNpass(e.target.value.replace(/\s/g, ""))}
           ></input>
           <button>signup</button>
         </form>

@@ -6,7 +6,8 @@ import axios from "axios";
 const ReqPass = () => {
   const navigate = useNavigate();
   const [btn, setBtn] = useState(false);
-  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
+  const Url =
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SEND_MAIL;
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -36,9 +37,9 @@ const ReqPass = () => {
     if (email.toLowerCase().match(re) !== null && email.length > 6) {
       try {
         const body = { to: email };
-        axios.post(Url, body).then((response) => {
+        await axios.post(Url, body).then((response) => {
           if (response.data.sent === true) {
-            navigate(process.env.REACT_APP_RST_CODE)
+            navigate(process.env.REACT_APP_RST_CODE);
             localStorage.setItem("mail", email);
           } else {
             if (response.data.message === "Wrong email") {
@@ -67,7 +68,7 @@ const ReqPass = () => {
             type="text"
             maxLength={35}
             value={email}
-            onChange={(e) => setEmail(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setEmail(e.target.value.replace(/\s/g, ""))}
           ></input>
           <button disabled={btn}>send email</button>
           <h3>{statueM}</h3>
@@ -83,7 +84,16 @@ const ReqPass = () => {
           </span>
         </h6>
         <div className={`${classes.loadSec} ${btn ? classes.loading : ""}`}>
-          <div className={classes.ldsroller}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div className={classes.ldsroller}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </section>
     </Fragment>

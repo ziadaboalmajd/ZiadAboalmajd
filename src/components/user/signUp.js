@@ -49,7 +49,7 @@ const SignUp = () => {
           password: nPass,
         };
 
-        axios.post(Url, body).then((response) => {
+        await axios.post(Url, body).then((response) => {
           if (response.data.login) {
             setUser({ login: true, user: response.data.user });
             navigate(process.env.REACT_APP_HOME);

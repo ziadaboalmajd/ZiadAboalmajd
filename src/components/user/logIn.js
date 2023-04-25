@@ -36,7 +36,7 @@ const LogIn = () => {
     e.preventDefault();
     try {
       const body = { name: name, password: pass };
-      axios.post(Url, body, { withCredentials: true }).then((response) => {
+      await axios.post(Url, body, { withCredentials: true }).then((response) => {
         if (response.data.login === true) {
           setUser({ login: true, user: response.data.user });
           navigate(process.env.REACT_APP_HOME);

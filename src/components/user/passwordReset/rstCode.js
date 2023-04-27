@@ -18,6 +18,7 @@ const RstCode = () => {
   const [statueL, setStatueL] = useState("");
   const email = localStorage.getItem("mail");
   useEffect(() => {
+    setStatueL("");
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
@@ -25,7 +26,6 @@ const RstCode = () => {
   }, [statueM]);
 
   useEffect(() => {
-    setStatueL("");
     axios.get(Url, { withCredentials: true }).then((response) => {
       try {
         if (response.data) {
@@ -74,7 +74,7 @@ const RstCode = () => {
   };
 
   const reSend = async (e) => {
-    setStatueM("waiting for resend");
+    setStatueL("waiting for resend....");
     e.preventDefault();
     const body = {
       to: email,

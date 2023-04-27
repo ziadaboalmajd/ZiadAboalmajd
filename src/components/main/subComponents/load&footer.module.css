@@ -101,7 +101,7 @@ footer h3 {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--clr-primary-9);
+    background: var(--clr-grey-5);
     margin: -4px 0 0 -4px;
 }
 

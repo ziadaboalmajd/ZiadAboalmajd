@@ -18,7 +18,6 @@ const LogIn = () => {
 
   useEffect(() => {
     setStatueL("");
-
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);

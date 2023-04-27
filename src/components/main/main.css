@@ -77,6 +77,10 @@ footer h3 {
   color: var(--clr-primary-5);
 }
 
+.pdf-link {
+  color: var(--clr-primary-5);
+}
+
 @media screen and (min-width: 992px) {
   .jobs-center {
     width: 90vw;
@@ -127,62 +131,6 @@ footer h3 {
 .btn:hover {
   color: var(--clr-primary-1);
   background: var(--clr-primary-8);
-}
-
-footer {
-  margin-bottom: 1rem !important;
-  max-width: 800px !important;
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  justify-content: center;
-  margin: 2rem auto;
-}
-
-footer h3 {
-  color: var(--clr-grey-3);
-  font-size: 25px;
-}
-.footer a {
-  padding-left: 0.5rem;
-  text-decoration: none;
-  color: var(--clr-grey-5);
-}
-
-
-.footer h4 {
-  width: fit-content;
-  padding-bottom: 0.3rem;
-}
-
-.footer h4:hover {
-  color: var(--clr-primary-5);
-  box-shadow: 0 2px var(--clr-primary-5);
-  -webkit-transition: var(--transition);
-  transition: var(--transition);
-}
-
-.footer div {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.pdf-link {
-  color: var(--clr-primary-5);
-}
-
-@media screen and (min-width: 650px) {
-  .footer {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  .certificate {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 /* ---------------------------- */

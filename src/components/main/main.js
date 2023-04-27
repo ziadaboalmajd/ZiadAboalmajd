@@ -15,12 +15,13 @@ import Certificates from "./subComponents/certificates";
 import Skills from "./subComponents/skills";
 import Comments from "./subComponents/comments";
 import Footer from "./subComponents/footer";
+import LoadingP from "./subComponents/loadingP";
 import "./main.css";
 
 const Home = () => {
   const { user } = useContext(AccountContext);
   return user.login === null ? (
-    ""
+    <LoadingP />
   ) : (
     <main>
       <ProSidebarProvider>
@@ -30,9 +31,9 @@ const Home = () => {
         <Route path={process.env.REACT_APP_LOGIN} element={<LogIn />} />
         <Route path={process.env.REACT_APP_SIGNUP} element={<SignUp />} />
         <Route path={process.env.REACT_APP_REQ_PASS} element={<ReqPass />} />
-        <Route path={process.env.REACT_APP_RST_CODE} element={<RstCode/>} />
+        <Route path={process.env.REACT_APP_RST_CODE} element={<RstCode />} />
         <Route element={<PrivatePreset />}>
-          <Route path={process.env.REACT_APP_RST_PASS} element={<RstPass/>} />
+          <Route path={process.env.REACT_APP_RST_PASS} element={<RstPass />} />
         </Route>
         <Route
           path={process.env.REACT_APP_HOME}
@@ -41,7 +42,7 @@ const Home = () => {
               <Section />
               <Slider />
               <Certificates />
-              < Skills/>
+              <Skills />
               <Comments />
               <Footer />
             </div>

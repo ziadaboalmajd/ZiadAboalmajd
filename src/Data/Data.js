@@ -1,7 +1,14 @@
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { RiContactsBookLine } from "react-icons/ri";
 import { AiOutlineHome, AiFillAndroid } from "react-icons/ai";
-import { FaRegCommentDots, FaReact, FaNodeJs, FaAws } from "react-icons/fa";
+import {
+  FaRegCommentDots,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
 import { VscFilePdf, VscGithub } from "react-icons/vsc";
 import { BsCodeSlash } from "react-icons/bs";
@@ -11,6 +18,8 @@ import {
   SiTsnode,
   SiPostgresql,
   SiFirebase,
+  SiGmail,
+  SiFreelancer,
 } from "react-icons/si";
 import { DiCss3, DiJavascript, DiSass } from "react-icons/di";
 
@@ -60,21 +69,25 @@ const Info = [
     id: "1",
     link: "https://www.linkedin.com/in/ziad-gamalaboalmajd-17332b241/",
     platform: "linkedIn",
+    Icon: FaLinkedin,
   },
   {
     id: "2",
     link: "mailto:ziadgamalaboalmajd@gmail.com",
     platform: "gmail",
+    Icon: SiGmail,
   },
   {
     id: "3",
     link: "https://github.com/ziadaboalmajd",
     platform: "github",
+    Icon: FaGithub,
   },
   {
     id: "4",
     link: "https://www.freelancer.com/u/ziadaboalmajd",
     platform: "freelancer",
+    Icon: SiFreelancer,
   },
 ];
 const projects = [

@@ -14,10 +14,12 @@ const SignUp = () => {
   const [nPass, setNpass] = useState("");
   const [mail, setmail] = useState("");
   const [statueM, setStatueM] = useState("");
+  const [statueL, setStatueL] = useState("");
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   useEffect(() => {
+    setStatueL("");
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
@@ -42,6 +44,8 @@ const SignUp = () => {
   const sign = async (e) => {
     e.preventDefault();
     if (mail.toLowerCase().match(re) !== null) {
+      setStatueL("loading....please wait");
+      setStatueM("");
       try {
         const body = {
           name: nName,
@@ -95,6 +99,7 @@ const SignUp = () => {
           <button>signup</button>
         </form>
         <h3>{statueM}</h3>
+        <h3 className={classes.statueL}>{statueL}</h3>
         <h6>
           already have an account,{" "}
           <span

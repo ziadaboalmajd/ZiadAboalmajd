@@ -7,14 +7,18 @@ import classes from "../user.module.css";
 const LogIn = () => {
   const navigate = useNavigate();
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_UP_PASSA;
+  const Url =
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_UP_PASSA;
 
   const { setUser, setCodePass } = useContext(AccountContext);
   const [pass, setPass] = useState("");
   const [cpass, setCpass] = useState("");
   const [statueM, setStatueM] = useState("");
+  const [statueL, setStatueL] = useState("");
 
   useEffect(() => {
+    setStatueL("");
+
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
@@ -34,6 +38,8 @@ const LogIn = () => {
     e.preventDefault();
     if (pass.length > 6 && cpass === pass) {
       const body = { pass: pass, cpass: cpass };
+      setStatueL("loading....please wait");
+      setStatueM("");
       await axios
         .post(Url, body, { withCredentials: true })
         .then((response) => {
@@ -77,6 +83,7 @@ const LogIn = () => {
           ></input>
           <button>update</button>
           <h3>{statueM}</h3>
+          <h3 className={classes.statueL}>{statueL}</h3>
         </form>
       </section>
     </Fragment>

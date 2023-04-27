@@ -143,6 +143,9 @@
 }
 
 /* loading btn animation  */
+.statueL{
+    color: var(--clr-grey-7) !important;
+}
 .loadSec {
     position: fixed;
     top: 50%;

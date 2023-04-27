@@ -13,8 +13,10 @@ const LogIn = () => {
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [statueM, setStatueM] = useState("");
+  const [statueL, setStatueL] = useState("");
 
   useEffect(() => {
+    setStatueL("");
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
@@ -35,16 +37,20 @@ const LogIn = () => {
   const log = async (e) => {
     e.preventDefault();
     try {
+      setStatueL("loading....please wait");
+      setStatueM("");
       const body = { name: name, password: pass };
-      await axios.post(Url, body, { withCredentials: true }).then((response) => {
-        if (response.data.login === true) {
-          setUser({ login: true, user: response.data.user });
-          navigate(process.env.REACT_APP_HOME);
-        } else {
-          setUser({ login: false });
-          setStatueM(checkValid(response.data.message));
-        }
-      });
+      await axios
+        .post(Url, body, { withCredentials: true })
+        .then((response) => {
+          if (response.data.login === true) {
+            setUser({ login: true, user: response.data.user });
+            navigate(process.env.REACT_APP_HOME);
+          } else {
+            setUser({ login: false });
+            setStatueM(checkValid(response.data.message));
+          }
+        });
     } catch (err) {
       setStatueM("an error occurs");
       console.log(err);
@@ -61,7 +67,7 @@ const LogIn = () => {
             type="text"
             maxLength={10}
             value={name}
-            onChange={(e) => setName(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setName(e.target.value.replace(/\s/g, ""))}
           ></input>
           <label>password</label>
           <input
@@ -70,7 +76,7 @@ const LogIn = () => {
             autoComplete="on"
             maxLength={35}
             value={pass}
-            onChange={(e) => setPass(e.target.value.replace(/\s/g, ''))}
+            onChange={(e) => setPass(e.target.value.replace(/\s/g, ""))}
           ></input>
           <h5
             onClick={() => {
@@ -81,6 +87,7 @@ const LogIn = () => {
           </h5>
           <button>login</button>
           <h3>{statueM}</h3>
+          <h3 className={classes.statueL}>{statueL}</h3>
         </form>
         <h6>
           don't have account,{" "}

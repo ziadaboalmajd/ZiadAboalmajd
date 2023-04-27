@@ -15,6 +15,7 @@ const RstCode = () => {
 
   const [code, setCode] = useState("");
   const [statueM, setStatueM] = useState("");
+  const [statueL, setStatueL] = useState("");
   const email = localStorage.getItem("mail");
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
@@ -24,6 +25,7 @@ const RstCode = () => {
   }, [statueM]);
 
   useEffect(() => {
+    setStatueL("");
     axios.get(Url, { withCredentials: true }).then((response) => {
       try {
         if (response.data) {
@@ -46,6 +48,8 @@ const RstCode = () => {
   const verifyCode = async (e) => {
     e.preventDefault();
     if (code.length > 5) {
+      setStatueL("loading....please wait");
+      setStatueM("");
       await axios
         .get(Url, { withCredentials: true })
         .then((response) => {
@@ -103,6 +107,7 @@ const RstCode = () => {
           ></input>
           <button>verify code</button>
           <h3>{statueM}</h3>
+          <h3 className={classes.statueL}>{statueL}</h3>
         </form>
         <h6>
           an email with a 6-digits number has been sent to {email},{" "}

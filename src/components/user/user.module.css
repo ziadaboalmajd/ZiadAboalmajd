@@ -131,12 +131,19 @@
     letter-spacing: 15px;
 }
 
+.rstCode h6 {
+    max-width: 350px;
+    font-size: 9px;
+    text-transform: lowercase;
+    text-align: center;
+}
+
 .rstPass h1 {
     font-size: 1.7rem;
 }
 
 /* loading btn animation  */
-.statueL{
+.statueL {
     color: var(--clr-grey-7) !important;
 }
 

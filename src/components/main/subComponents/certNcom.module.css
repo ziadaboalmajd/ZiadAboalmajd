@@ -55,6 +55,14 @@
     color: var(--za-alerttUsr);
 }
 
+.comment .lovebtn{
+    color: var(--za-alerttUsr);
+}
+
+.lovedcom{
+    -webkit-text-fill-color: var(--za-alerttUsr);
+}
+
 .certiSec h1 {
     margin-bottom: 2.5rem;
 }

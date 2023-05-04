@@ -3,11 +3,11 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "%PUBLIC_URL%/ZS.png",
+      "src": "%PUBLIC_URL%/logo/ZS.png",
       "type": "image/png"
     },
     {
-      "src": "%PUBLIC_URL%/ZS.png",
+      "src": "%PUBLIC_URL%/logo/ZS.png",
       "type": "image/png"
     }
   ],

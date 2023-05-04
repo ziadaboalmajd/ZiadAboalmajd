@@ -7,7 +7,7 @@ export const AccountContext = createContext();
 const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGINA;
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState({ login: null });
+  const [user, setUser] = useState({ login: false });
   const [viewPro, setViewPro] = useState(null);
   const [rstCode, setRstCode] = useState(0);
   const [codePass, setCodePass] = useState(null);

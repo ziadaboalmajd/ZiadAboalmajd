@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AccountContext } from "../../user/accountContext";
 import { FaTrash } from "react-icons/fa";
+import { AiOutlineHeart } from "react-icons/ai";
 import classes from "./certNcom.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +16,13 @@ const Comments = () => {
   const [statueM, setStatueM] = useState("");
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
+  const [loved, setLoved] = useState(null);
 
-  const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
+  const Url =
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
+
+  const Urll = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
+
   const current = new Date();
   const date = `${current.getDate()}-${
     current.getMonth() + 1
@@ -72,6 +78,27 @@ const Comments = () => {
       }
     } else {
       setStatueM("comment must be at least 6 characters");
+    }
+  };
+
+  const postlikes = async (e) => {
+    e.preventDefault();
+    try {
+      const body = {
+        id: comId,
+        name: user.user ? user.user : "",
+      };
+      axios
+        .post(Urll, body, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data) {
+            console.log(response.data);
+          }
+        });
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -157,13 +184,25 @@ const Comments = () => {
                 <div>
                   <p>{value}</p>
                   {user.login && user.user === name ? (
-                    <FaTrash
-                      className={classes.trash}
-                      onClick={() => {
-                        setComId(id);
-                        setDeleteC(true);
-                      }}
-                    />
+                    <div>
+                      <FaTrash
+                        className={classes.trash}
+                        onClick={() => {
+                          setComId(id);
+                          setDeleteC(true);
+                        }}
+                      />
+                      <AiOutlineHeart
+                        className={`${classes.lovebtn} ${
+                          loved ? classes.lovedcom : ""
+                        }`}
+                        onClick={() => {
+                          setComId(id);
+                          setLoved(!loved);
+                          postlikes();
+                        }}
+                      />
+                    </div>
                   ) : (
                     ""
                   )}

@@ -93,20 +93,19 @@ const Info = [
 const projects = [
   {
     id: 1,
-    image: process.env.PUBLIC_URL + "/App ss2.png",
+    image: process.env.PUBLIC_URL + "/images/attendance.png",
     name: "College's attendance app",
     title: "Full-Stack App",
-    quote: "",
   },
   {
     id: 2,
-    image: process.env.PUBLIC_URL + "/Screenshot 2023-01-07 214529.png",
+    image: process.env.PUBLIC_URL + "/images/QuranApp.png",
     name: "Quran App",
     title: "Single-page application (SPA)",
   },
   {
     id: 3,
-    image: process.env.PUBLIC_URL + "/Screenshot 2023-03-20 205900.png",
+    image: process.env.PUBLIC_URL + "/images/ResizeApp.png",
     name: "Resize image App",
     title: "NodeJs Backend App",
   },
@@ -114,21 +113,21 @@ const projects = [
 const degrees = [
   {
     id: 1,
-    image: process.env.PUBLIC_URL + "/certificate.png",
+    image: process.env.PUBLIC_URL + "/images/Fullstack.png",
     link: "https://drive.google.com/file/d/1qWAonPdI6TC5DZfbazM_9QPoQm51BM6H/view?usp=share_link",
     name: "Full-Stack Udacity's certificate",
     title: "Full stack",
   },
   {
     id: 2,
-    image: process.env.PUBLIC_URL + "/professional certificate.png",
+    image: process.env.PUBLIC_URL + "/images/Frontend.png",
     link: "https://drive.google.com/file/d/1DOUuRKrktkR2VxrXLpchasPaHa6-66QS/view?usp=share_link",
     name: "professional Udacity's certificate",
     title: "Front end",
   },
   {
     id: 3,
-    image: process.env.PUBLIC_URL + "/ielts.jpg",
+    image: process.env.PUBLIC_URL + "/images/ielts.jpg",
     link: "https://drive.google.com/file/d/1lbOZKnRM_SyLPt9UQkMDftRGYbPDYcmk/view?usp=share_link",
     name: "IELTS Academic",
     title: "English",

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AccountContext } from "../../user/accountContext";
 import { FaTrash } from "react-icons/fa";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import classes from "./certNcom.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -34,7 +34,7 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-
+  const HeartIcon = loved ? AiOutlineHeart : AiFillHeart;
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
@@ -184,21 +184,19 @@ const Comments = () => {
                   <p>{value}</p>
                   {user.login && user.user === name ? (
                     <div>
+                      <HeartIcon
+                        className={classes.lovebtn}
+                        onClick={() => {
+                          setComId(id);
+                          setLoved(!loved);
+                          postlikes();
+                        }}
+                      />
                       <FaTrash
                         className={classes.trash}
                         onClick={() => {
                           setComId(id);
                           setDeleteC(true);
-                        }}
-                      />
-                      <AiOutlineHeart
-                        className={`${classes.lovebtn} ${
-                          loved ? classes.lovedcom : ""
-                        }`}
-                        onClick={() => {
-                          setComId(id);
-                          setLoved(!loved);
-                          postlikes();
                         }}
                       />
                     </div>

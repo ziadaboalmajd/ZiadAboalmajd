@@ -7,7 +7,7 @@ export const AccountContext = createContext();
 const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LOGINA;
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState({ login: false });
+  const [user, setUser] = useState({ login: null });
   const [viewPro, setViewPro] = useState(null);
   const [rstCode, setRstCode] = useState(0);
   const [codePass, setCodePass] = useState(null);
@@ -15,7 +15,6 @@ const UserContext = ({ children }) => {
   const navigate = useNavigate();
 
   const getCookies = async () => {
-    // axios.defaults.withCredentials = true;
     await axios
       .get(Url, {
         withCredentials: true,

@@ -55,11 +55,11 @@
     color: var(--za-alerttUsr);
 }
 
-.comment .lovebtn{
+.comment .lovebtn {
     color: var(--za-alerttUsr);
 }
 
-.lovedcom{
+.lovedcom {
     -webkit-text-fill-color: var(--za-alerttUsr);
 }
 
@@ -98,7 +98,16 @@
     align-items: flex-end;
 }
 
-.secomment div:last-child {
+.secomment .comSupSec {
+    flex-direction: column;
+}
+
+.secomment .comSupSec p {
+    width: 100%;
+    text-align: left;
+}
+
+.secomment>div:last-child {
     margin: auto;
     width: 37%;
     height: 3px;

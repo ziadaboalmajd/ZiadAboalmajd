@@ -81,8 +81,7 @@ const Comments = () => {
     }
   };
 
-  const postlikes = async (e) => {
-    e.preventDefault();
+  const postlikes = async () => {
     try {
       const body = {
         id: comId,
@@ -181,7 +180,7 @@ const Comments = () => {
                   <h3>{name}</h3>
                   <h5>{time}</h5>
                 </div>
-                <div>
+                <div className={classes.comSupSec}>
                   <p>{value}</p>
                   {user.login && user.user === name ? (
                     <div>

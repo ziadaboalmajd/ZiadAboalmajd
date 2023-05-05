@@ -16,6 +16,7 @@ const Comments = () => {
   const [statueM, setStatueM] = useState("");
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
+  const [likes, setlikes] = useState([]);
   const [loved, setLoved] = useState(null);
 
   const Url =
@@ -52,6 +53,12 @@ const Comments = () => {
     setNoComm(obj !== undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [comment]);
+
+  useEffect(() => {
+    let obj = likes.find((o) => o.unnest === user.user);
+    console.log(obj !== undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [likes]);
 
   const postComments = async (e) => {
     e.preventDefault();
@@ -95,6 +102,7 @@ const Comments = () => {
           if (response.data) {
             console.log(response.data);
             console.log(response.data.like.unset);
+            setlikes(response.data)
           }
         });
     } catch (err) {
@@ -187,7 +195,6 @@ const Comments = () => {
                     <HeartIcon
                       className={classes.lovebtn}
                       onClick={() => {
-                        // setComId(id);
                         setLoved(!loved);
                         postlikes(id);
                       }}

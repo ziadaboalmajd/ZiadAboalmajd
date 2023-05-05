@@ -15,12 +15,12 @@ const Likes = (props) => {
 
   const getlikes = async () => {
     try {
-    console.log(props.user);
+      console.log(props.user);
       const body = {
         user: props.user ? props.user : "",
       };
       axios
-        .get(Url, body, {
+        .post(Url + "/usr", body, {
           withCredentials: true,
         })
         .then((response) => {

@@ -94,6 +94,7 @@ const Comments = () => {
         .then((response) => {
           if (response.data) {
             console.log(response.data);
+            console.log(response.data.like.unset);
           }
         });
     } catch (err) {

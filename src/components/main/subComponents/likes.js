@@ -51,12 +51,11 @@ const Likes = (props) => {
     } catch (err) {
       console.log(err);
     }
-    console.log(props.log + " " + loved.includes(9));
-    console.log(props.id);
   };
 
   return (
     <div className={classes.likeCont}>
+      {console.log(props.id)}
       {props.log && loved.includes(props.id) ? (
         <AiFillHeart
           className={classes.lovebtn}

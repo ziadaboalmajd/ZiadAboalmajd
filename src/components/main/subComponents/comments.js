@@ -184,6 +184,7 @@ const Comments = () => {
         )}
         {comment.length > 3 ? (
           <h6
+          className={classes.showCom}
             onClick={() => {
               setComMore(!comMore);
             }}

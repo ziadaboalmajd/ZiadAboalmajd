@@ -15,6 +15,7 @@ const Likes = (props) => {
 
   const getlikes = async () => {
     try {
+    console.log(props.user);
       const body = {
         user: props.user ? props.user : "",
       };

@@ -6,7 +6,7 @@ import classes from "./certNcom.module.css";
 const Likes = (props) => {
   const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
   const [loved, setLoved] = useState(null);
-  const [likes, setLikes] = useState();
+  const [likes, setLikes] = useState([]);
   let HeartIcon = loved ? AiFillHeart : AiOutlineHeart;
 
   useEffect(() => {

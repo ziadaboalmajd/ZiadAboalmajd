@@ -12,7 +12,7 @@ const Likes = (props) => {
     getNlikes();
     getlikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loved]);
 
   const getlikes = async () => {
     try {
@@ -60,10 +60,8 @@ const Likes = (props) => {
         console.log(err);
       });
   };
-  console.log(likes[props.index - 1]);
-  console.log(likes[props.index - 1].cardinality);
-  console.log(Number(likes[props.index - 1].cardinality));
-  let nlike = Number(likes[props.index - 1].cardinality);
+  let nlike =
+    likes[0] !== undefined ? Number(likes[props.index].cardinality) : 0;
   return (
     <div className={classes.likeCont}>
       {loved.includes(Number(props.id)) && props.log ? (
@@ -74,7 +72,11 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-          <h6>you {nlike > 1 ? ` and ${nlike - 1} other` : ""}</h6>
+          {nlike !== 0 ? (
+            <h6>you{nlike === 1 ? "" : ` and ${nlike - 1} other`}</h6>
+          ) : (
+            ""
+          )}
         </>
       ) : (
         <>
@@ -84,15 +86,15 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-          <h6>
-            {Number(likes[props.index - 1]) > 1
-              ? `${likes[props.index - 1].length - 1} love`
-              : "one love"}
-          </h6>
+          {nlike !== 0 ? (
+            <h6>{nlike === 1 ? "one love" : `${nlike} love`}</h6>
+          ) : (
+            ""
+          )}
         </>
       )}
     </div>
   );
 };
-
+// use cookie to minimize the time used by database, by store all data when page refresh and then send it every period of time 
 export default Likes;

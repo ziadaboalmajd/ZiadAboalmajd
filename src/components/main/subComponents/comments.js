@@ -34,7 +34,7 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-  let HeartIcon = loved ?  AiFillHeart : AiOutlineHeart;
+  let HeartIcon = loved ? AiFillHeart : AiOutlineHeart;
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
@@ -191,18 +191,18 @@ const Comments = () => {
                         postlikes(id);
                       }}
                     />
+                    {user.login && user.user === name ? (
+                      <FaTrash
+                        className={classes.trash}
+                        onClick={() => {
+                          setComId(id);
+                          setDeleteC(true);
+                        }}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </div>
-                  {user.login && user.user === name ? (
-                    <FaTrash
-                      className={classes.trash}
-                      onClick={() => {
-                        setComId(id);
-                        setDeleteC(true);
-                      }}
-                    />
-                  ) : (
-                    ""
-                  )}
                 </div>
                 <div></div>
               </div>

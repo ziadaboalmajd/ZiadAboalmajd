@@ -9,6 +9,7 @@ const Likes = (props) => {
   const [likes, setLikes] = useState([]);
 
   useEffect(() => {
+    getNlikes();
     getlikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -18,61 +19,75 @@ const Likes = (props) => {
       const body = {
         user: props.user ? props.user : "",
       };
-      axios
-        .post(Url + "/usr", body, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data[0].array_agg) {
-            console.log(response.data[0].array_agg);
-            setLoved(response.data[0].array_agg);
-          } else {
-            setLoved([]);
-          }
-        });
+      axios.post(Url + "/usr", body).then((response) => {
+        if (response.data !== null) {
+          setLoved(response.data);
+        } else {
+          setLoved([]);
+        }
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
+  const getNlikes = async () => {
+    axios
+      .get(Url + "/nusr")
+      .then((response) => {
+        if (response.data !== null) {
+          console.log(response.data);
+          setLikes(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const postlikes = async (id) => {
-    try {
-      const body = {
-        id: id,
-        name: props.log ? props.user : "",
-      };
-      axios
-        .post(Url, body, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data !== "error") {
-            getlikes();
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
+    const body = {
+      id: id,
+      name: props.log ? props.user : "",
+    };
+    axios
+      .post(Url, body)
+      .then((response) => {
+        if (response.data !== "error") {
+          getlikes();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className={classes.likeCont}>
-      {console.log(loved)}
       {loved.includes(Number(props.id)) && props.log ? (
-        <AiFillHeart
-          className={classes.lovebtn}
-          onClick={() => {
-            postlikes(props.id);
-          }}
-        />
+        <>
+          <AiFillHeart
+            className={classes.lovebtn}
+            onClick={() => {
+              postlikes(props.id);
+            }}
+          />
+          <h6>
+            you {loved.length !== 1 ? " and" + loved.length - 1 + " other" : ""}
+          </h6>
+        </>
       ) : (
-        <AiOutlineHeart
-          className={classes.lovebtn}
-          onClick={() => {
-            postlikes(props.id);
-          }}
-        />
+        <>
+          <AiOutlineHeart
+            className={classes.lovebtn}
+            onClick={() => {
+              postlikes(props.id);
+            }}
+          />
+          <h6>
+            {loved.length !== 1 ? loved.length - 1 + " love" : "one love"}
+          </h6>
+        </>
       )}
-      <h6>{"you and other n"}</h6>
     </div>
   );
 };

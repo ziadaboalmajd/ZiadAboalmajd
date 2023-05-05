@@ -160,11 +160,7 @@ const Comments = () => {
                   <p>{value}</p>
                   <div>
                     {user.login ? (
-                      <Likes
-                        user={user.user}
-                        log={user.login}
-                        id={id}
-                      />
+                      <Likes user={user.user} log={user.login} id={id} />
                     ) : (
                       ""
                     )}

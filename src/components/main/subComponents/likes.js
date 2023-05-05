@@ -23,7 +23,7 @@ const Likes = (props) => {
   const getlikes = async () => {
     try {
       axios
-        .post(Url, {
+        .get(Url, {
           withCredentials: true,
         })
         .then((response) => {

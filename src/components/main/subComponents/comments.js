@@ -82,8 +82,6 @@ const Comments = () => {
   };
 
   const postlikes = async () => {
-    console.log(comId);
-    console.log(user.user);
     try {
       const body = {
         id: comId,

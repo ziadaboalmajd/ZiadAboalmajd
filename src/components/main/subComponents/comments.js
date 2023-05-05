@@ -54,11 +54,11 @@ const Comments = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [comment]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     let obj = likes.find((o) => o.unnest === user.user);
     console.log(obj !== undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [likes]);
+  }, [likes]);*/
 
   const postComments = async (e) => {
     e.preventDefault();

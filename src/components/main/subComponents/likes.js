@@ -24,9 +24,7 @@ const Likes = (props) => {
         })
         .then((response) => {
           if (response.data) {
-            console.log(response.data);
-            console.log(response.data[0].array_agg);
-            setLoved(response.data);
+            setLoved(response.data[0].array_agg);
           }
         });
     } catch (err) {
@@ -45,9 +43,8 @@ const Likes = (props) => {
           withCredentials: true,
         })
         .then((response) => {
-          if (response.data) {
-            console.log(response.data);
-            setLoved(response.data);
+          if (response.data !== "error") {
+            getlikes();
           }
         });
     } catch (err) {

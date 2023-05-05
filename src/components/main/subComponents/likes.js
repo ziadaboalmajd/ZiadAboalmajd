@@ -55,7 +55,9 @@ const Likes = (props) => {
 
   return (
     <div className={classes.likeCont}>
-      {console.log(props.id + props.log + loved.includes(props.id))}
+      {console.log(
+        props.id + props.id === 9 + props.log + loved.includes(props.id)
+      )}
       {props.id === 9 ? (
         <AiFillHeart
           className={classes.lovebtn}
@@ -71,7 +73,7 @@ const Likes = (props) => {
           }}
         />
       )}
-      <h6>number of likes</h6>
+      <h6>{"you and other n"}</h6>
     </div>
   );
 };

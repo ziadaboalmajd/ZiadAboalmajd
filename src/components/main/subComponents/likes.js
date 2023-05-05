@@ -51,28 +51,29 @@ const Likes = (props) => {
       console.log(err);
     }
   };
+  {
+    console.log(props.com);
+  }
+  {
+    console.log(props.id);
+  }
   return (
     <div className={classes.likeCont}>
-      {console.log(props.com)}
-      {console.log(props.coma)}
-      {props.com.map((comnt) => {
-        const { idc } = comnt;
-        return idc === 9 ? (
-          <AiFillHeart
-            className={classes.lovebtn}
-            onClick={() => {
-              postlikes(props.id);
-            }}
-          />
-        ) : (
-          <AiOutlineHeart
-            className={classes.lovebtn}
-            onClick={() => {
-              postlikes(props.id);
-            }}
-          />
-        );
-      })}
+      {props.id === 9 ? (
+        <AiFillHeart
+          className={classes.lovebtn}
+          onClick={() => {
+            postlikes(props.id);
+          }}
+        />
+      ) : (
+        <AiOutlineHeart
+          className={classes.lovebtn}
+          onClick={() => {
+            postlikes(props.id);
+          }}
+        />
+      )}
       <h6>{"you and other n"}</h6>
     </div>
   );

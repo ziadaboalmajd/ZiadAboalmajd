@@ -72,7 +72,7 @@ const Likes = (props) => {
             }}
           />
           <h6>
-            you {loved.length !== 1 ? " and" + loved.length - 1 + " other" : ""}
+            you {loved.length !== 1 ? ` and ${loved.length - 1} other` : ""}
           </h6>
         </>
       ) : (
@@ -84,7 +84,7 @@ const Likes = (props) => {
             }}
           />
           <h6>
-            {loved.length !== 1 ? loved.length - 1 + " love" : "one love"}
+            {loved.length !== 1 ? `${loved.length - 1} love` : "one love"}
           </h6>
         </>
       )}

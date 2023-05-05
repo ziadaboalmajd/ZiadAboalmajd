@@ -60,6 +60,9 @@ const Likes = (props) => {
         console.log(err);
       });
   };
+  console.log(likes[props.index - 1]);
+  console.log(likes[props.index - 1].cardinality);
+  console.log(Number(likes[props.index - 1].cardinality));
   let nlike = Number(likes[props.index - 1].cardinality);
   return (
     <div className={classes.likeCont}>

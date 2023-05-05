@@ -160,7 +160,12 @@ const Comments = () => {
                   <p>{value}</p>
                   <div>
                     {user.login ? (
-                      <Likes user={user.user} log={user.login} id={id} />
+                      <Likes
+                        comment={aComment}
+                        user={user.user}
+                        log={user.login}
+                        id={id}
+                      />
                     ) : (
                       ""
                     )}
@@ -184,7 +189,7 @@ const Comments = () => {
         )}
         {comment.length > 3 ? (
           <h6
-          className={classes.showCom}
+            className={classes.showCom}
             onClick={() => {
               setComMore(!comMore);
             }}

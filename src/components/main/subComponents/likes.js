@@ -24,7 +24,6 @@ const Likes = (props) => {
         })
         .then((response) => {
           if (response.data.length !== 0) {
-            console.log(response.data[0].array_agg);
             setLoved(response.data[0].array_agg);
           }
         });
@@ -52,27 +51,26 @@ const Likes = (props) => {
       console.log(err);
     }
   };
-
   return (
     <div className={classes.likeCont}>
-      {console.log(
-        props.id + props.id === 9 + props.log + loved.includes(props.id)
-      )}
-      {props.id === 9 ? (
-        <AiFillHeart
-          className={classes.lovebtn}
-          onClick={() => {
-            postlikes(props.id);
-          }}
-        />
-      ) : (
-        <AiOutlineHeart
-          className={classes.lovebtn}
-          onClick={() => {
-            postlikes(props.id);
-          }}
-        />
-      )}
+      {props.com.map((comnt) => {
+        const { idc } = comnt;
+        return idc === 9 ? (
+          <AiFillHeart
+            className={classes.lovebtn}
+            onClick={() => {
+              postlikes(props.id);
+            }}
+          />
+        ) : (
+          <AiOutlineHeart
+            className={classes.lovebtn}
+            onClick={() => {
+              postlikes(props.id);
+            }}
+          />
+        );
+      })}
       <h6>{"you and other n"}</h6>
     </div>
   );

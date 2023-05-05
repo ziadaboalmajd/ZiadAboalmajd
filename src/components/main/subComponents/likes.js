@@ -15,7 +15,6 @@ const Likes = (props) => {
 
   const getlikes = async () => {
     try {
-      console.log(props.user);
       const body = {
         user: props.user ? props.user : "",
       };
@@ -26,6 +25,7 @@ const Likes = (props) => {
         .then((response) => {
           if (response.data) {
             console.log(response.data);
+            console.log(response.data[0].array_agg);
             setLoved(response.data);
           }
         });

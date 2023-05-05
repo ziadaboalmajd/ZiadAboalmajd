@@ -53,6 +53,7 @@ const Likes = (props) => {
   };
   return (
     <div className={classes.likeCont}>
+      {console.log(props.com)}
       {props.com.map((comnt) => {
         const { idc } = comnt;
         return idc === 9 ? (

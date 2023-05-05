@@ -71,12 +71,7 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-          <h6>
-            you{" "}
-            {likes[props.index].length !== 1
-              ? ` and ${likes[props.index].length - 1} other`
-              : ""}
-          </h6>
+
         </>
       ) : (
         <>
@@ -86,11 +81,7 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-          <h6>
-            {likes[props.index].length !== 1
-              ? `${likes[props.index].length - 1} love`
-              : "one love"}
-          </h6>
+
         </>
       )}
     </div>

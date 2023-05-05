@@ -34,7 +34,7 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-  const HeartIcon = loved ?  AiFillHeart : AiOutlineHeart;
+  let HeartIcon = loved ?  AiFillHeart : AiOutlineHeart;
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
@@ -81,10 +81,10 @@ const Comments = () => {
     }
   };
 
-  const postlikes = async () => {
+  const postlikes = async (id) => {
     try {
       const body = {
-        id: comId,
+        id: id,
         name: user.user ? user.user : "",
       };
       axios
@@ -186,9 +186,9 @@ const Comments = () => {
                     <HeartIcon
                       className={classes.lovebtn}
                       onClick={() => {
-                        setComId(id);
+                        // setComId(id);
                         setLoved(!loved);
-                        postlikes();
+                        postlikes(id);
                       }}
                     />
                   </div>

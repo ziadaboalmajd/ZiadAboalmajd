@@ -18,7 +18,8 @@ import {
 import classes from "./headNside.module.css";
 
 const SideBar = () => {
-  const Url =  process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUTA;
+  const Url =
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUTA;
   const navigate = useNavigate();
 
   const { user, setUser, setViewPro } = useContext(AccountContext);
@@ -45,6 +46,7 @@ const SideBar = () => {
         className={classes.sidebar}
         breakPoint="always"
         transitionDuration={600}
+        defaultOpen={false}
       >
         <Menu
           className={classes.menu}
@@ -110,13 +112,16 @@ const SideBar = () => {
             <MenuItem
               prefix={<IoMdContact />}
               onClick={() => {
-                setViewPro(true)
+                setViewPro(true);
               }}
             >
               welcome {user.user}
             </MenuItem>
           ) : (
-            <MenuItem component={<Link to={process.env.REACT_APP_LOGIN} />} prefix={<IoEnter />}>
+            <MenuItem
+              component={<Link to={process.env.REACT_APP_LOGIN} />}
+              prefix={<IoEnter />}
+            >
               logIn
             </MenuItem>
           )}

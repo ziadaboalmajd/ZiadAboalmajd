@@ -17,7 +17,7 @@ const Likes = (props) => {
   const getlikes = async () => {
     try {
       const body = {
-        user: props.user ? props.user : "",
+        user: props.user,
       };
       axios.post(Url + "/usr", body).then((response) => {
         if (response.data !== null) {
@@ -72,7 +72,10 @@ const Likes = (props) => {
             }}
           />
           <h6>
-            you {loved.length !== 1 ? ` and ${loved.length - 1} other` : ""}
+            you{" "}
+            {likes[props.index].length !== 1
+              ? ` and ${likes[props.index].length - 1} other`
+              : ""}
           </h6>
         </>
       ) : (
@@ -84,7 +87,9 @@ const Likes = (props) => {
             }}
           />
           <h6>
-            {loved.length !== 1 ? `${loved.length - 1} love` : "one love"}
+            {likes[props.index].length !== 1
+              ? `${likes[props.index].length - 1} love`
+              : "one love"}
           </h6>
         </>
       )}

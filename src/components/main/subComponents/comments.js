@@ -148,7 +148,7 @@ const Comments = () => {
             <h4>no comments yet , be the first one to comment</h4>
           </div>
         ) : (
-          aComment.map((comments) => {
+          aComment.map((comments, index) => {
             const { id, time, value, name } = comments;
             return (
               <div key={id} className={classes.secomment}>
@@ -160,7 +160,12 @@ const Comments = () => {
                   <p>{value}</p>
                   <div>
                     {user.login ? (
-                      <Likes user={user.user} log={user.login} id={id} />
+                      <Likes
+                        index={index}
+                        user={user.user}
+                        log={user.login}
+                        id={id}
+                      />
                     ) : (
                       ""
                     )}

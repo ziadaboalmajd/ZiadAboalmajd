@@ -51,15 +51,10 @@ const Likes = (props) => {
       console.log(err);
     }
   };
-  {
-    console.log(props.com);
-  }
-  {
-    console.log(props.id);
-  }
   return (
     <div className={classes.likeCont}>
-      {9 === 9 ? (
+      {console.log((props.id === 9 + " " + props.id) === loved)}
+      {Number(props.id) === 9 ? (
         <AiFillHeart
           className={classes.lovebtn}
           onClick={() => {

@@ -161,8 +161,6 @@ const Comments = () => {
                   <div>
                     {user.login ? (
                       <Likes
-                        coma={comment}
-                        com={aComment}
                         user={user.user}
                         log={user.login}
                         id={id}

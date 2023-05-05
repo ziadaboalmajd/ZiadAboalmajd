@@ -55,6 +55,12 @@
     color: var(--za-alerttUsr);
 }
 
+.comment .likeCont {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
 .comment .lovebtn {
     color: var(--za-alerttUsr);
 }

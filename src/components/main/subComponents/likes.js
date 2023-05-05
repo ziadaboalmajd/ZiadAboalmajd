@@ -5,31 +5,27 @@ import classes from "./certNcom.module.css";
 
 const Likes = (props) => {
   const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
-  const [loved, setLoved] = useState(null);
+  const [loved, setLoved] = useState([]);
   const [likes, setLikes] = useState([]);
-  let HeartIcon = loved ? AiFillHeart : AiOutlineHeart;
 
   useEffect(() => {
     getlikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    let obj = likes.find((o) => o.name === props.user);
-    console.log(obj !== undefined);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [likes]);
-
   const getlikes = async () => {
     try {
+      const body = {
+        user: props.user ? props.user : "",
+      };
       axios
-        .get(Url, {
+        .get(Url, body, {
           withCredentials: true,
         })
         .then((response) => {
           if (response.data) {
             console.log(response.data);
-            setLikes(response.data);
+            setLoved(response.data);
           }
         });
     } catch (err) {
@@ -50,7 +46,7 @@ const Likes = (props) => {
         .then((response) => {
           if (response.data) {
             console.log(response.data);
-            setLikes(response.data);
+            setLoved(response.data);
           }
         });
     } catch (err) {
@@ -59,13 +55,24 @@ const Likes = (props) => {
   };
 
   return (
-    <HeartIcon
-      className={classes.lovebtn}
-      onClick={() => {
-        setLoved(!loved);
-        postlikes(props.id);
-      }}
-    />
+    <div className={classes.likeCont}>
+      {props.log && loved.includes(props.id) ? (
+        <AiFillHeart
+          className={classes.lovebtn}
+          onClick={() => {
+            postlikes(props.id);
+          }}
+        />
+      ) : (
+        <AiOutlineHeart
+          className={classes.lovebtn}
+          onClick={() => {
+            postlikes(props.id);
+          }}
+        />
+      )}
+      <h6>number of likes</h6>
+    </div>
   );
 };
 

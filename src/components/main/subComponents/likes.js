@@ -55,8 +55,8 @@ const Likes = (props) => {
 
   return (
     <div className={classes.likeCont}>
-      {console.log(props.id)}
-      {props.log && loved.includes(props.id) ? (
+      {console.log(props.id + props.log + loved.includes(props.id))}
+      {props.id === 9 ? (
         <AiFillHeart
           className={classes.lovebtn}
           onClick={() => {

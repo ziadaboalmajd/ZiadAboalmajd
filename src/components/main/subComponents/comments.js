@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AccountContext } from "../../user/accountContext";
 import { FaTrash } from "react-icons/fa";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import classes from "./certNcom.module.css";
 import { useNavigate } from "react-router-dom";
+import Likes from "./likes";
 
 const Comments = () => {
   const navigate = useNavigate();
@@ -16,13 +16,9 @@ const Comments = () => {
   const [statueM, setStatueM] = useState("");
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
-  const [likes, setlikes] = useState([]);
-  const [loved, setLoved] = useState(null);
 
   const Url =
     process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
-
-  const Urll = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
 
   const current = new Date();
   const date = `${current.getDate()}-${
@@ -35,7 +31,6 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-  let HeartIcon = loved ? AiFillHeart : AiOutlineHeart;
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
@@ -53,12 +48,6 @@ const Comments = () => {
     setNoComm(obj !== undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [comment]);
-
-  /*useEffect(() => {
-    let obj = likes.find((o) => o.unnest === user.user);
-    console.log(obj !== undefined);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [likes]);*/
 
   const postComments = async (e) => {
     e.preventDefault();
@@ -85,28 +74,6 @@ const Comments = () => {
       }
     } else {
       setStatueM("comment must be at least 6 characters");
-    }
-  };
-
-  const postlikes = async (id) => {
-    try {
-      const body = {
-        id: id,
-        name: user.user ? user.user : "",
-      };
-      axios
-        .post(Urll, body, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data) {
-            console.log(response.data);
-            console.log(response.data.like.unset);
-            setlikes(response.data)
-          }
-        });
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -192,13 +159,11 @@ const Comments = () => {
                 <div className={classes.comSupSec}>
                   <p>{value}</p>
                   <div>
-                    <HeartIcon
-                      className={classes.lovebtn}
-                      onClick={() => {
-                        setLoved(!loved);
-                        postlikes(id);
-                      }}
-                    />
+                    {user.login ? (
+                      <Likes user={user.user} log={user.login} id={id} />
+                    ) : (
+                      ""
+                    )}
                     {user.login && user.user === name ? (
                       <FaTrash
                         className={classes.trash}

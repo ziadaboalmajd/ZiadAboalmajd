@@ -36,7 +36,6 @@ const Likes = (props) => {
       .get(Url + "/nusr")
       .then((response) => {
         if (response.data !== null) {
-          console.log(response.data);
           setLikes(response.data);
         }
       })
@@ -61,6 +60,7 @@ const Likes = (props) => {
         console.log(err);
       });
   };
+  let nlike = Number(likes[props.index - 1].cardinality);
   return (
     <div className={classes.likeCont}>
       {loved.includes(Number(props.id)) && props.log ? (
@@ -71,7 +71,7 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-
+          <h6>you {nlike > 1 ? ` and ${nlike - 1} other` : ""}</h6>
         </>
       ) : (
         <>
@@ -81,7 +81,11 @@ const Likes = (props) => {
               postlikes(props.id);
             }}
           />
-
+          <h6>
+            {Number(likes[props.index - 1]) > 1
+              ? `${likes[props.index - 1].length - 1} love`
+              : "one love"}
+          </h6>
         </>
       )}
     </div>

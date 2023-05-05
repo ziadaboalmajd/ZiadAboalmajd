@@ -23,7 +23,8 @@ const Likes = (props) => {
           withCredentials: true,
         })
         .then((response) => {
-          if (response.data) {
+          if (response.data.length !== 0) {
+            console.log(response.data[0].array_agg);
             setLoved(response.data[0].array_agg);
           }
         });

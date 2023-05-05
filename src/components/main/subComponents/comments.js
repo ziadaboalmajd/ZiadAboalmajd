@@ -82,6 +82,8 @@ const Comments = () => {
   };
 
   const postlikes = async () => {
+    console.log(comId);
+    console.log(user.user);
     try {
       const body = {
         id: comId,
@@ -182,24 +184,24 @@ const Comments = () => {
                 </div>
                 <div className={classes.comSupSec}>
                   <p>{value}</p>
+                  <div>
+                    <HeartIcon
+                      className={classes.lovebtn}
+                      onClick={() => {
+                        setComId(id);
+                        setLoved(!loved);
+                        postlikes();
+                      }}
+                    />
+                  </div>
                   {user.login && user.user === name ? (
-                    <div>
-                      <HeartIcon
-                        className={classes.lovebtn}
-                        onClick={() => {
-                          setComId(id);
-                          setLoved(!loved);
-                          postlikes();
-                        }}
-                      />
-                      <FaTrash
-                        className={classes.trash}
-                        onClick={() => {
-                          setComId(id);
-                          setDeleteC(true);
-                        }}
-                      />
-                    </div>
+                    <FaTrash
+                      className={classes.trash}
+                      onClick={() => {
+                        setComId(id);
+                        setDeleteC(true);
+                      }}
+                    />
                   ) : (
                     ""
                   )}

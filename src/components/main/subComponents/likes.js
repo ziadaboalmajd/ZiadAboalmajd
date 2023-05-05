@@ -59,7 +59,7 @@ const Likes = (props) => {
   }
   return (
     <div className={classes.likeCont}>
-      {props.id === 9 ? (
+      {9 === 9 ? (
         <AiFillHeart
           className={classes.lovebtn}
           onClick={() => {

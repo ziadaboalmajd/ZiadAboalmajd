@@ -34,7 +34,7 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-  const HeartIcon = loved ? AiOutlineHeart : AiFillHeart;
+  const HeartIcon = loved ?  AiFillHeart : AiOutlineHeart;
   useEffect(() => {
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {

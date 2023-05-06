@@ -13,7 +13,7 @@
     max-width: 450px;
 }
 
-.comment>div:last-child {
+.comment>div:nth-child(3) {
     margin-top: 1rem;
 }
 
@@ -65,8 +65,12 @@
 .comment .likeCont h6 {
     padding-left: 5px;
     color: var(--clr-grey-5);
-    font-size: 7px;
+    font-size: 10px;
     text-decoration: underline;
+}
+
+.comment .likeCont>:first-child {
+    font-size: 17px;
 }
 
 .comment .lovebtn {

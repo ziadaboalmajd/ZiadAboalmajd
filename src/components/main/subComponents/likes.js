@@ -12,23 +12,22 @@ const Likes = (props) => {
     getNlikes();
     getlikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loved]);
+  }, []);
 
   const getlikes = async () => {
-    try {
-      const body = {
-        user: props.user,
-      };
-      axios.post(Url + "/usr", body).then((response) => {
+    const body = {
+      user: props.user,
+    };
+    axios
+      .post(Url + "/usr", body)
+      .then((response) => {
         if (response.data !== null) {
           setLoved(response.data);
-        } else {
-          setLoved([]);
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const getNlikes = async () => {
@@ -44,21 +43,24 @@ const Likes = (props) => {
       });
   };
 
+  const postLlikes = (id, index) => {
+    loved.includes(Number(id))
+      ? setLoved(loved.filter((i) => i !== Number(id)))
+      : setLoved(loved.concat(Number(id)));
+    let newLike = likes;
+    loved.includes(Number(id))
+      ? (newLike[index].cardinality = newLike[index].cardinality - 1)
+      : (newLike[index].cardinality += 1);
+    setLikes(newLike);
+  };
   const postlikes = async (id) => {
     const body = {
       id: id,
       name: props.log ? props.user : "",
     };
-    axios
-      .post(Url, body)
-      .then((response) => {
-        if (response.data !== "error") {
-          getlikes();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.post(Url, body).catch((err) => {
+      console.log(err);
+    });
   };
   let nlike =
     likes[0] !== undefined ? Number(likes[props.index].cardinality) : 0;
@@ -69,6 +71,7 @@ const Likes = (props) => {
           <AiFillHeart
             className={classes.lovebtn}
             onClick={() => {
+              postLlikes(props.id, props.index);
               postlikes(props.id);
             }}
           />
@@ -83,6 +86,7 @@ const Likes = (props) => {
           <AiOutlineHeart
             className={classes.lovebtn}
             onClick={() => {
+              postLlikes(props.id, props.index);
               postlikes(props.id);
             }}
           />
@@ -96,5 +100,4 @@ const Likes = (props) => {
     </div>
   );
 };
-// use cookie to minimize the time used by database, by store all data when page refresh and then send it every period of time 
 export default Likes;

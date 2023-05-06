@@ -4,6 +4,7 @@
   height: 100vh;
   overflow: hidden
 }
+
 .stopScrolls {
   margin: 0;
   height: 100vh;
@@ -11,6 +12,9 @@
 }
 
 /* sidebar */
+.SideBar {
+  display: none;
+}
 
 .Menutitle {
   display: flex;

@@ -12,11 +12,12 @@ const Header = (props) => {
   viewPro
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
-
+  //todo
+  // profile, photo, male/female, age, email, username
   if (viewPro) {
     window.scrollTo(0, 0);
   }
-  
+
   return (
     <div className={classes.header}>
       <div>

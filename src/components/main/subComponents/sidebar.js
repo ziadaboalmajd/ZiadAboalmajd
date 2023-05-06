@@ -16,6 +16,8 @@ import {
   SubMenu,
 } from "react-pro-sidebar";
 import classes from "./headNside.module.css";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const SideBar = () => {
   const Url =
@@ -24,11 +26,14 @@ const SideBar = () => {
 
   const { user, setUser, setViewPro } = useContext(AccountContext);
   let { toggleSidebar, toggled } = useProSidebar();
-
+  const [disNone, setDisn] = useState(false);
   toggled
     ? document.body.classList.add(classes.stopScrolls)
     : document.body.classList.remove(classes.stopScrolls);
-
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setDisn(true);
+  }, []);
   const signOut = () => {
     try {
       axios.get(Url, { withCredentials: true }).then((response) => {
@@ -43,7 +48,7 @@ const SideBar = () => {
   return (
     <div>
       <Sidebar
-        className={classes.sidebar}
+        className={`${classes.sidebar} ${disNone ? "" : classes.SideBar}`}
         breakPoint="always"
         transitionDuration={600}
         defaultOpen={false}

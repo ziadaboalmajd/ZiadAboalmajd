@@ -4,19 +4,11 @@ import { AccountContext } from "../../user/accountContext";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import classes from "./headNside.module.css";
+import Profile from "./profile";
 
 const Header = (props) => {
-  const { user, setUser, viewPro, setViewPro } = useContext(AccountContext);
+  const { user, setViewPro } = useContext(AccountContext);
   const navigate = useNavigate();
-
-  viewPro
-    ? document.body.classList.add(classes.stopScroll)
-    : document.body.classList.remove(classes.stopScroll);
-  //todo
-  // profile, photo, male/female, age, email, username
-  if (viewPro) {
-    window.scrollTo(0, 0);
-  }
 
   return (
     <div className={classes.header}>
@@ -46,31 +38,7 @@ const Header = (props) => {
             logIn
           </h4>
         )}
-        {viewPro ? (
-          <div>
-            <div className={classes.signout}>
-              <h4>hello {user.user}</h4>
-              <h4
-                onClick={() => {
-                  setUser(false);
-                  props.signOut();
-                  setViewPro(false);
-                  navigate(process.env.REACT_APP_HOME);
-                }}
-              >
-                signout
-              </h4>
-            </div>
-            <div
-              className={classes.overlay}
-              onClick={() => {
-                setViewPro(false);
-              }}
-            ></div>
-          </div>
-        ) : (
-          ""
-        )}
+        <Profile signOut={props.signOut} />
       </div>
     </div>
   );

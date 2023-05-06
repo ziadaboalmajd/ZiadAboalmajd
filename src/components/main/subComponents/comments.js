@@ -159,16 +159,12 @@ const Comments = () => {
                 <div className={classes.comSupSec}>
                   <p>{value}</p>
                   <div>
-                    {user.login ? (
-                      <Likes
-                        index={index}
-                        user={user.user}
-                        log={user.login}
-                        id={id}
-                      />
-                    ) : (
-                      ""
-                    )}
+                    <Likes
+                      index={index}
+                      user={user.user}
+                      log={user.login}
+                      id={id}
+                    />
                     {user.login && user.user === name ? (
                       <FaTrash
                         className={classes.trash}

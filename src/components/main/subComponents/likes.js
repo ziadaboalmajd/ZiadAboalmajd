@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import classes from "./certNcom.module.css";
+import classes from "./likes&profile.module.css";
 
 const Likes = (props) => {
   const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
@@ -83,17 +83,29 @@ const Likes = (props) => {
         </>
       ) : (
         <>
-          <AiOutlineHeart
-            className={classes.lovebtn}
-            onClick={() => {
-              postLlikes(props.id, props.index);
-              postlikes(props.id);
-            }}
-          />
-          {nlike !== 0 ? (
-            <h6>{nlike === 1 ? "one love" : `${nlike} love`}</h6>
+          {props.log ? (
+            <>
+              <AiOutlineHeart
+                className={classes.lovebtn}
+                onClick={() => {
+                  postLlikes(props.id, props.index);
+                  postlikes(props.id);
+                }}
+              />
+              {nlike !== 0 ? (
+                <h6>{nlike === 1 ? "one love" : `${nlike} love`}</h6>
+              ) : (
+                ""
+              )}
+            </>
           ) : (
-            ""
+            <>
+              {nlike !== 0 ? (
+                <h6>{nlike === 1 ? "one 🤍 love" : `${nlike} 🤍 love`}</h6>
+              ) : (
+                ""
+              )}
+            </>
           )}
         </>
       )}

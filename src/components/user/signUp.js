@@ -1,9 +1,9 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useEffect, useState, Fragment, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AccountContext } from "./accountContext";
+import UsrInfo from "./usrInfo";
 import classes from "./user.module.css";
-import { useEffect } from "react";
 
 const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNUPA;
 
@@ -13,6 +13,8 @@ const SignUp = () => {
   const [nName, setnName] = useState("");
   const [nPass, setNpass] = useState("");
   const [mail, setmail] = useState("");
+  const [childSub, setchildSub] = useState(0);
+  const [chilData, setchilData] = useState(0);
   const [statueM, setStatueM] = useState("");
   const [statueL, setStatueL] = useState("");
   const re =
@@ -26,24 +28,30 @@ const SignUp = () => {
     };
   }, [statueM]);
 
-  const checkValid = (message) => {
-    if (message === "Please enter all the details") {
-      if (nName.length < 4) {
-        message = "short username at least 3 characters";
-      } else if (mail.length < 6) {
-        message = "short email at least 6 characters";
-      } else if (nPass.length < 6) {
-        message = "short password at least 6 characters";
-      }
-    } else if (mail.toLowerCase().match(re) === null) {
-      message = "invalid email format";
+  const checkValid = () => {
+    if (nName.length < 4) {
+      return "short username at least 3 characters";
+    } else if (mail.length < 6) {
+      return "short email at least 6 characters";
+    } else if (nPass.length < 6) {
+      return "short password at least 6 characters";
+    } else if (chilData !== 1) {
+      return "enter age and gender";
     }
-    return message;
+    if (mail.toLowerCase().match(re) === null) {
+      return "invalid email format";
+    }
   };
 
   const sign = async (e) => {
     e.preventDefault();
-    if (mail.toLowerCase().match(re) !== null) {
+    if (
+      mail.toLowerCase().match(re) !== null &&
+      nName.length > 3 &&
+      nPass.length > 3 &&
+      chilData === 1
+    ) {
+      setchildSub(childSub + 1);
       setStatueL("loading....please wait");
       setStatueM("");
       try {
@@ -52,7 +60,6 @@ const SignUp = () => {
           email: mail,
           password: nPass,
         };
-
         await axios
           .post(Url, body, { withCredentials: true })
           .then((response) => {
@@ -61,12 +68,11 @@ const SignUp = () => {
               navigate(process.env.REACT_APP_HOME);
             } else {
               setUser({ login: false });
-              setStatueM(checkValid(response.data.message));
+              setStatueM("an error occurs");
             }
           });
       } catch (err) {
         setStatueM("an error occurs");
-        console.log(err);
       }
     } else {
       setStatueM(checkValid());
@@ -96,6 +102,7 @@ const SignUp = () => {
             value={nPass}
             onChange={(e) => setNpass(e.target.value.replace(/\s/g, ""))}
           ></input>
+          <UsrInfo sub={childSub} setData={setchilData} name={nName} />
           <button>signup</button>
         </form>
         <h3>{statueM}</h3>

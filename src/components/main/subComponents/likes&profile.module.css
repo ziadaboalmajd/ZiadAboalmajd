@@ -54,7 +54,7 @@
     margin: 0 auto;
     width: 75px;
     height: 75px;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png);
+    /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png); */
     /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP_XSOeXAHBY7GNzsWAJYA7jZMNIQCsP2zPpCEBDfkZA&s); */
     background-position: center;
     background-size: cover;
@@ -73,10 +73,12 @@
 }
 
 .usrData {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* width: 100%; */
+    width: 90%;
+    margin: 0 auto;
 }
 
 .usrData div {
@@ -94,7 +96,8 @@
 
 .usrData h3 {
     margin-bottom: 0;
-    padding-bottom: 2%;
+    /* padding-bottom: 2%; */
+    padding: 2% 1%;
     color: var(--clr-grey-1);
     font-size: 13px;
     text-transform: capitalize;

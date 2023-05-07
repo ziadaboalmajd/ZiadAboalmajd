@@ -38,7 +38,7 @@ const Header = (props) => {
             logIn
           </h4>
         )}
-        <Profile signOut={props.signOut} />
+        {user.login ? <Profile signOut={props.signOut} /> : ""}
       </div>
     </div>
   );

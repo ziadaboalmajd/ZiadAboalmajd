@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Profile = (props) => {
   const { user, setUser, viewPro, setViewPro } = useContext(AccountContext);
-  const [usrI, setUsrI] = useState();
+  const [usrI, setUsrI] = useState([]);
   const [usrImg, setUsrImg] = useState(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
   );
@@ -22,11 +22,11 @@ const Profile = (props) => {
   }
 
   useEffect(() => {
-    if (user.login) {
+    if (user.user) {
       usrData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.user]);
+  }, [user.login]);
 
   const css = {
     backgroundImage: `url(${usrImg})`,
@@ -53,20 +53,26 @@ const Profile = (props) => {
         <div className={classes.usrInfo}>
           <div className={classes.imgCont} style={css}></div>
           <h2>{user.user}</h2>
-          <div className={classes.usrData}>
-            <div>
-              <h3>email</h3>
-              <h4>{usrI[0] ? usrI[0] : "_"}</h4>
+          {usrI[0] !== undefined ? (
+            <div className={classes.usrData}>
+              <div>
+                <h3>email</h3>
+                <h4>{usrI[0] ? usrI[0] : "_"}</h4>
+              </div>
+              <div>
+                <h3>gender</h3>
+                <h4>
+                  {usrI[2] === 0 ? "male" : `${usrI[2] === 1 ? "female" : "_"}`}
+                </h4>
+              </div>
+              <div>
+                <h3>age</h3>
+                <h4>{usrI[1] ? usrI[1] : "_"}</h4>
+              </div>
             </div>
-            <div>
-              <h3>gender</h3>
-              <h4>{usrI[2] ? (usrI[2] === 0 ? "male" : "female") : "_"}</h4>
-            </div>
-            <div>
-              <h3>age</h3>
-              <h4>{usrI[1] ? usrI[1] : "_"}</h4>
-            </div>
-          </div>
+          ) : (
+            "...loading"
+          )}
         </div>
         <h4
           onClick={() => {

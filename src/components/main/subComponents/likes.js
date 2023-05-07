@@ -44,15 +44,24 @@ const Likes = (props) => {
   };
 
   const postLlikes = (id, index) => {
+    let newLike = likes;
+
     loved.includes(Number(id))
       ? setLoved(loved.filter((i) => i !== Number(id)))
       : setLoved(loved.concat(Number(id)));
-    let newLike = likes;
-    loved.includes(Number(id))
-      ? (newLike[index].cardinality = newLike[index].cardinality - 1)
-      : (newLike[index].cardinality += 1);
+
+    if (loved.includes(Number(id)) && newLike[index]?.cardinality) {
+      newLike[index].cardinality = newLike[index].cardinality - 1;
+    } else if (newLike[index]?.cardinality) {
+      newLike[index].cardinality += 1;
+    } else {
+      setLikes(newLike.concat({ cardinality: 1 }));
+      console.log(newLike);
+      console.log(likes);
+    }
     setLikes(newLike);
   };
+
   const postlikes = async (id) => {
     const body = {
       id: id,
@@ -63,7 +72,9 @@ const Likes = (props) => {
     });
   };
   let nlike =
-    likes[0] !== undefined ? Number(likes[props.index].cardinality) : 0;
+    likes[props.index]?.cardinality !== undefined
+      ? Number(likes[props.index].cardinality)
+      : 0;
   return (
     <div className={classes.likeCont}>
       {loved.includes(Number(props.id)) && props.log ? (

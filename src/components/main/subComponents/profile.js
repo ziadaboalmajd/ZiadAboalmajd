@@ -71,7 +71,7 @@ const Profile = (props) => {
               </div>
             </div>
           ) : (
-            "...loading"
+            <div className={classes.loadingT}>...loading</div>
           )}
         </div>
         <h4

@@ -145,3 +145,8 @@
 .lovebtn {
     color: var(--za-alerttUsr);
 }
+
+.loadingT {
+    margin: auto;
+    text-align: center;
+}

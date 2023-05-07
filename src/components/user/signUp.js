@@ -17,15 +17,18 @@ const SignUp = () => {
   const [chilData, setchilData] = useState(0);
   const [statueM, setStatueM] = useState("");
   const [statueL, setStatueL] = useState("");
+  const [statuedis, setStatuedis] = useState(false);
   const re =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   useEffect(() => {
+    setStatuedis(false);
     setStatueL("");
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statueM]);
 
   const checkValid = () => {
@@ -45,13 +48,14 @@ const SignUp = () => {
 
   const sign = async (e) => {
     e.preventDefault();
+    setStatuedis(true);
     if (
       mail.toLowerCase().match(re) !== null &&
       nName.length > 3 &&
       nPass.length > 3 &&
       chilData === 1
     ) {
-      setchildSub(childSub + 1);
+      setchildSub(1);
       setStatueL("loading....please wait");
       setStatueM("");
       try {
@@ -103,7 +107,7 @@ const SignUp = () => {
             onChange={(e) => setNpass(e.target.value.replace(/\s/g, ""))}
           ></input>
           <UsrInfo sub={childSub} setData={setchilData} name={nName} />
-          <button>signup</button>
+          <button disabled={statuedis}>signup</button>
         </form>
         <h3>{statueM}</h3>
         <h3 className={classes.statueL}>{statueL}</h3>

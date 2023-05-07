@@ -14,17 +14,21 @@ const UsrInfo = (props) => {
     }
   };
 
-  const gUsrInfo = async () => {
+  const pUsrInfo = async () => {
     const body = {
       name: props.name,
       gen: gen,
       age: age,
     };
-    await axios.post(Url, body, { withCredentials: true }).catch(() => {});
+    if (props.name) {
+      await axios.post(Url, body, { withCredentials: true }).catch((err) => {
+        console.log(err);
+      });
+    }
   };
 
   useEffect(() => {
-    gUsrInfo();
+    pUsrInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.sub]);
 

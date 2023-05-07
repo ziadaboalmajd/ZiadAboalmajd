@@ -16,6 +16,7 @@ const Comments = () => {
   const [statueM, setStatueM] = useState("");
   const [comId, setComId] = useState("");
   const [noComm, setNoComm] = useState(null);
+  const [statuedis, setStatuedis] = useState(false);
 
   const Url =
     process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
@@ -31,7 +32,9 @@ const Comments = () => {
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
+
   useEffect(() => {
+    setStatuedis(false);
     let timer = setTimeout(() => setStatueM(""), 2000);
     return () => {
       clearTimeout(timer);
@@ -51,6 +54,7 @@ const Comments = () => {
 
   const postComments = async (e) => {
     e.preventDefault();
+    setStatuedis(true);
     if (newComment.replace(/ /g, "").length > 5) {
       try {
         const body = {
@@ -79,6 +83,7 @@ const Comments = () => {
 
   const deleteComment = async (e) => {
     e.preventDefault();
+    setStatuedis(false);
     const body = {
       id: comId,
     };
@@ -127,7 +132,7 @@ const Comments = () => {
             onChange={(e) => setNewComment(e.target.value)}
           ></textarea>
           <h5>{statueM}</h5>
-          <button>post</button>
+          <button disabled={statuedis}>post</button>
         </form>
       ) : (
         <div className={classes.comLock}>

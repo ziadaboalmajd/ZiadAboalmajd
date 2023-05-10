@@ -55,9 +55,8 @@ const Likes = (props) => {
     } else if (newLike[index]?.cardinality) {
       newLike[index].cardinality += 1;
     } else {
-      setLikes(newLike.concat({ cardinality: 1 }));
-      console.log(newLike.concat({ cardinality: 1 }));
-      console.log(newLike);
+      newLike = newLike.concat({ cardinality: 1 });
+      setLikes(newLike);
       console.log(likes);
     }
     setLikes(newLike);

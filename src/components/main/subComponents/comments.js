@@ -87,7 +87,7 @@ const Comments = () => {
     const body = {
       id: comId,
     };
-    axios.post(urll + "rmv");
+    axios.post(urll + "/rmv");
     axios
       .post(Url + "/delete", body, {
         withCredentials: true,

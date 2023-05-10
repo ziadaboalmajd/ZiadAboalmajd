@@ -75,6 +75,20 @@
 .secomment {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    transition: max-height 0.7s;
+    -webkit-transition: max-height 0.7s;
+    -moz-transition: max-height 0.7s;
+    -ms-transition: max-height 0.7s;
+    -o-transition: max-height 0.7s;
+}
+
+.secMoreC {
+    max-height: 120px;
+}
+
+.seclessC {
+    max-height: 0;
 }
 
 .secomment div {

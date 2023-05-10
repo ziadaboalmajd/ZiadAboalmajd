@@ -7,6 +7,7 @@ const Url = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_USR_INFO;
 const UsrInfo = (props) => {
   const [age, setAge] = useState("");
   const [gen, setGen] = useState();
+
   const numberInput = (e) => {
     const regex = /^[0-9\b]+$/;
     if (e.target.value === "" || regex.test(e.target.value)) {

@@ -27,13 +27,16 @@ const SideBar = () => {
   const { user, setUser, setViewPro } = useContext(AccountContext);
   let { toggleSidebar, toggled } = useProSidebar();
   const [disNone, setDisn] = useState(false);
+
   toggled
     ? document.body.classList.add(classes.stopScrolls)
     : document.body.classList.remove(classes.stopScrolls);
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     setDisn(true);
   }, []);
+
   const signOut = () => {
     try {
       axios.get(Url, { withCredentials: true }).then((response) => {
@@ -45,6 +48,7 @@ const SideBar = () => {
       console.log(err);
     }
   };
+  
   return (
     <div>
       <Sidebar

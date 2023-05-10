@@ -1,5 +1,5 @@
 import { AccountContext } from "../../user/accountContext";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./likes&profile.module.css";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -7,9 +7,15 @@ import axios from "axios";
 const Profile = (props) => {
   const { user, setUser, viewPro, setViewPro } = useContext(AccountContext);
   const [usrI, setUsrI] = useState([]);
+
   const [usrImg, setUsrImg] = useState(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
   );
+
+  const css = {
+    backgroundImage: `url(${usrImg})`,
+  };
+
   const Url =
     process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_USR_INFO + "/get";
 
@@ -27,10 +33,6 @@ const Profile = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.login]);
-
-  const css = {
-    backgroundImage: `url(${usrImg})`,
-  };
 
   const usrData = async () => {
     const body = {

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { AccountContext } from "../../user/accountContext";
 import { FaTrash } from "react-icons/fa";
@@ -9,6 +9,7 @@ import Likes from "./likes";
 const Comments = () => {
   const navigate = useNavigate();
   const { user } = useContext(AccountContext);
+  const comSec = useRef();
   const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [comMore, setComMore] = useState(false);
@@ -20,15 +21,13 @@ const Comments = () => {
 
   const Url =
     process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_COMMENTA;
+  const urll = process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_LIKE;
 
   const current = new Date();
   const date = `${current.getDate()}-${
     current.getMonth() + 1
   }-${current.getFullYear()}`;
-  const aComment =
-    !comMore && comment.length > 3 && comment.length !== 0
-      ? comment.slice(0, 3)
-      : comment;
+  /*const aComment =!comMore && comment.length > 3 && comment.length !== 0? comment.slice(0, 3): comment;*/
   deleteC
     ? document.body.classList.add(classes.stopScroll)
     : document.body.classList.remove(classes.stopScroll);
@@ -84,9 +83,11 @@ const Comments = () => {
   const deleteComment = async (e) => {
     e.preventDefault();
     setStatuedis(false);
+    console.log(statuedis);
     const body = {
       id: comId,
     };
+    axios.post(urll + "rmv");
     axios
       .post(Url + "/delete", body, {
         withCredentials: true,
@@ -147,16 +148,25 @@ const Comments = () => {
           </h3>
         </div>
       )}
-      <div>
-        {!aComment || aComment.length === 0 ? (
+      <div ref={comSec}>
+        {!comment || comment.length === 0 ? (
           <div className={classes.comAlert}>
             <h4>no comments yet , be the first one to comment</h4>
           </div>
         ) : (
-          aComment.map((comments, index) => {
+          comment.map((comments, index) => {
             const { id, time, value, name } = comments;
             return (
-              <div key={id} className={classes.secomment}>
+              <div
+                key={id}
+                className={`${classes.secomment} ${
+                  index > 2 && comMore
+                    ? classes.secMoreC
+                    : index > 2
+                    ? classes.seclessC
+                    : ""
+                }`}
+              >
                 <div>
                   <h3>{name}</h3>
                   <h5>{time}</h5>

@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ZiadAboalmajd/static/css/main.1ea905d0.css",
-    "main.js": "/ZiadAboalmajd/static/js/main.90ebe84f.js",
+    "main.js": "/ZiadAboalmajd/static/js/main.82eb4160.js",
     "index.html": "/ZiadAboalmajd/index.html",
     "main.1ea905d0.css.map": "/ZiadAboalmajd/static/css/main.1ea905d0.css.map",
-    "main.90ebe84f.js.map": "/ZiadAboalmajd/static/js/main.90ebe84f.js.map"
+    "main.82eb4160.js.map": "/ZiadAboalmajd/static/js/main.82eb4160.js.map"
   },
   "entrypoints": [
     "static/css/main.1ea905d0.css",
-    "static/js/main.90ebe84f.js"
+    "static/js/main.82eb4160.js"
   ]
 }

@@ -52,12 +52,14 @@ const Likes = (props) => {
 
     if (loved.includes(Number(id)) && newLike[index]?.cardinality) {
       newLike[index].cardinality = newLike[index].cardinality - 1;
-    } else if (newLike[index]?.cardinality) {
+    } else if (
+      newLike[index]?.cardinality ||
+      newLike[index]?.cardinality === 0
+    ) {
       newLike[index].cardinality += 1;
-    } else {
+    } else if (!newLike[index]?.cardinality) {
       newLike = newLike.concat({ cardinality: 1 });
       setLikes(newLike);
-      console.log(likes);
     }
     setLikes(newLike);
   };

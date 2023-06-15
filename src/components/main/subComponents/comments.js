@@ -53,8 +53,7 @@ const Comments = () => {
 
   const postComments = async (e) => {
     e.preventDefault();
-    setStatuedis(true);
-    if (newComment.replace(/ /g, "").length > 5) {
+    if (newComment.replace(/ /g, "").length > 7) {
       try {
         const body = {
           name: user.user,
@@ -76,18 +75,17 @@ const Comments = () => {
         console.log(err);
       }
     } else {
-      setStatueM("comment must be at least 6 characters");
+      setStatueM("comment must be at least 7 characters");
     }
   };
 
   const deleteComment = async (e) => {
     e.preventDefault();
     setStatuedis(false);
-    console.log(statuedis);
     const body = {
       id: comId,
     };
-    axios.post(urll + "/rmv");
+    axios.post(urll + "/rmv", body);
     axios
       .post(Url + "/delete", body, {
         withCredentials: true,
@@ -124,7 +122,13 @@ const Comments = () => {
     <div id="comments" className={`section ${classes.comment}`}>
       <h1>comments</h1>
       {user.login && !noComm ? (
-        <form onSubmit={postComments} className={classes.comForm}>
+        <form
+          onSubmit={(e) => {
+            setStatuedis(true);
+            postComments(e);
+          }}
+          className={classes.comForm}
+        >
           <label>leave your comment here</label>
           <textarea
             maxLength={150}
@@ -133,7 +137,11 @@ const Comments = () => {
             onChange={(e) => setNewComment(e.target.value)}
           ></textarea>
           <h5>{statueM}</h5>
-          <button disabled={statuedis}>post</button>
+          <button
+            disabled={statuedis}
+          >
+            post
+          </button>
         </form>
       ) : (
         <div className={classes.comLock}>

@@ -1,13 +1,11 @@
 import { AccountContext } from "../../user/accountContext";
 import React, { useContext, useEffect, useState } from "react";
 import classes from "./likes&profile.module.css";
-import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Profile = (props) => {
-  const { user, setUser, viewPro, setViewPro } = useContext(AccountContext);
+  const { user, viewPro, setViewPro } = useContext(AccountContext);
   const [usrI, setUsrI] = useState([]);
-
   const [usrImg, setUsrImg] = useState(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
   );
@@ -78,10 +76,8 @@ const Profile = (props) => {
         </div>
         <h4
           onClick={() => {
-            setUser(false);
-            props.signOut();
             setViewPro(false);
-            Navigate(process.env.REACT_APP_HOME);
+            props.signOut();
           }}
         >
           signout

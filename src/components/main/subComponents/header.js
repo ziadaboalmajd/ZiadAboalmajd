@@ -4,11 +4,27 @@ import { AccountContext } from "../../user/accountContext";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import classes from "./headNside.module.css";
+import axios from "axios";
 import Profile from "./profile";
 
 const Header = (props) => {
-  const { user, setViewPro } = useContext(AccountContext);
+  const { user, setUser, setViewPro } = useContext(AccountContext);
   const navigate = useNavigate();
+  const Url =
+    process.env.REACT_APP_DOMAIN_LINK + process.env.REACT_APP_SIGNOUTA;
+
+  const signOut = () => {
+    try {
+      axios.get(Url, { withCredentials: true }).then((response) => {
+        if (response.data.login === false) {
+          setUser({ login: false, user: undefined });
+          navigate(process.env.REACT_APP_HOME);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={classes.header}>
@@ -38,7 +54,7 @@ const Header = (props) => {
             logIn
           </h4>
         )}
-        {user.login ? <Profile signOut={props.signOut} /> : ""}
+        {user.login ? <Profile signOut={signOut} /> : ""}
       </div>
     </div>
   );

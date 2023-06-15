@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Data } from "../../../Data/Data";
-
+import axios from "axios";
 const Section = () => {
   const [jobs, setJobs] = useState(Data);
   const [value, setValue] = useState(0);
   const { title, dates, company, duties } = jobs[value];
+  const postData = async (e) => {
+    //for (let pt = 36976; pt > 1000; pt--) {
+    const url = "https://smartgift.daftra.com/api2/invoices/2001";
+    await axios
+      .delete(url, {
+        headers: {
+          APIKEY: "8e65f8c7a195f5b3e94446a4a165cbfd8a84f83c",
+        },
+      })
+      .then((response) => {
+        console.log("pt");
+      })
+      .catch(() => {
+        console.log("err");
+      });
+  };
   return (
     <section className="section" style={{ margintop: "3rem" }}>
       <div className="title" id="about">
-        <h2>Ziad Aboalmajd</h2>
+        <h2 onClick={postData}>Ziad Aboalmajd</h2>
         <div className="underline"></div>
       </div>
-      <div className="jobs-center" >
+      <div className="jobs-center">
         <div className="btn-container">
           {jobs.map((item, index) => {
             return (

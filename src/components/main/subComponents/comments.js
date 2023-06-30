@@ -137,11 +137,7 @@ const Comments = () => {
             onChange={(e) => setNewComment(e.target.value)}
           ></textarea>
           <h5>{statueM}</h5>
-          <button
-            disabled={statuedis}
-          >
-            post
-          </button>
+          <button disabled={statuedis}>post</button>
         </form>
       ) : (
         <div className={classes.comLock}>
@@ -162,7 +158,7 @@ const Comments = () => {
             <h4>no comments yet , be the first one to comment</h4>
           </div>
         ) : (
-          comment.map((comments, index) => {
+          comment?.map((comments, index) => {
             const { id, time, value, name } = comments;
             return (
               <div

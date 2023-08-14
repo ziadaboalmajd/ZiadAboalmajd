@@ -69,7 +69,9 @@ const LogIn = () => {
             autoComplete="off"
             maxLength={35}
             value={pass}
-            onChange={(e) => setPass(e.target.value.replace(/\s/g, ""))}
+            onChange={(e) =>
+              setPass(e.target.value.replace(/^\s+|\s+$/gm, "").toLowerCase())
+            }
           ></input>
           <label>confirm new password</label>
           <input
@@ -78,7 +80,9 @@ const LogIn = () => {
             autoComplete="off"
             maxLength={35}
             value={cpass}
-            onChange={(e) => setCpass(e.target.value.replace(/\s/g, ""))}
+            onChange={(e) =>
+              setCpass(e.target.value.replace(/^\s+|\s+$/gm, ""))
+            }
           ></input>
           <button>update</button>
           <h3>{statueM}</h3>

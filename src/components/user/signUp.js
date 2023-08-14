@@ -92,19 +92,25 @@ const SignUp = () => {
           <input
             maxLength={10}
             value={nName}
-            onChange={(e) => setnName(e.target.value.replace(/\s/g, ""))}
+            onChange={(e) =>
+              setnName(e.target.value.replace(/^\s+|\s+$/gm, "").toLowerCase())
+            }
           ></input>
           <label>email</label>
           <input
             maxLength={35}
             value={mail}
-            onChange={(e) => setmail(e.target.value.replace(/\s/g, ""))}
+            onChange={(e) =>
+              setmail(e.target.value.replace(/\s/g, "").toLowerCase())
+            }
           ></input>
           <label>password</label>
           <input
             maxLength={35}
             value={nPass}
-            onChange={(e) => setNpass(e.target.value.replace(/\s/g, ""))}
+            onChange={(e) =>
+              setNpass(e.target.value.replace(/^\s+|\s+$/gm, ""))
+            }
           ></input>
           <UsrInfo sub={childSub} setData={setchilData} name={nName} />
           <button disabled={statuedis}>signup</button>
